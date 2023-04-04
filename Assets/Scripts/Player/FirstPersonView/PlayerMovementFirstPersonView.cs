@@ -5,6 +5,7 @@ public class PlayerMovementFirstPersonView : PlayerMovement
     public float speed = 6f;
     public float cameraSpeed = 150f;
     Vector3 movement;
+    // TODO: refactor to use PlayerAnimationController
     Animator anim;
     Rigidbody playerRigidbody;
     PlayerHealth playerHealth;
@@ -19,6 +20,7 @@ public class PlayerMovementFirstPersonView : PlayerMovement
     // awake is called before start
     private void Awake(){
         floorMask = LayerMask.GetMask("Floor");
+        // TODO: refactor to use PlayerAnimationController
         anim = GetComponent<Animator>();
         playerHealth = GetComponent <PlayerHealth> ();
         playerRigidbody = GetComponent<Rigidbody>();
@@ -38,6 +40,7 @@ public class PlayerMovementFirstPersonView : PlayerMovement
     }
     public override void Animating(float h, float v){
         bool walking = h != 0f || v != 0f;
+        // TODO: refactor to use PlayerAnimationController
         anim.SetBool("IsWalking", walking);
     }
 

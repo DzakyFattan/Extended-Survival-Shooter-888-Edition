@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+// TODO: move this to Gun.cs
 public class PlayerShooting : MonoBehaviour
 {
     public int damagePerShot = 20;                  

@@ -12,7 +12,7 @@ public class PlayerHealth : MonoBehaviour
     public float flashSpeed = 5f;
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
 
-
+    // TODO: refactor to use PlayerAnimationController  
     Animator anim;
     AudioSource playerAudio;
     PlayerMovement playerMovement;
@@ -23,6 +23,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Awake()
     {
+        // TODO: refactor to use PlayerAnimationController
         anim = GetComponent<Animator>();
         playerAudio = GetComponent<AudioSource>();
         playerMovement = GetComponent<PlayerMovement>();
@@ -70,6 +71,7 @@ public class PlayerHealth : MonoBehaviour
 
         playerShooting.DisableEffects();
 
+        // TODO: refactor to use PlayerAnimationController
         anim.SetTrigger("Die");
 
         playerAudio.clip = deathClip;
