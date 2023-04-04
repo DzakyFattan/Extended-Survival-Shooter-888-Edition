@@ -7,36 +7,83 @@ public class Rifle : Weapon
 
     // get player animator
     public PlayerAnimationController animController;
-    
+    // get the player right hand
+    public GameObject playerRightHand;
+
     // set attack cooldown and damage
     public float attackCooldown = 0.5f;
     public int damage = 10;
+    
+    // gunline
+    public LineRenderer gunLine;
 
+    float timer = 0;
+    float effectsDisplayTime = 0.2f;
     void Awake()
     {
-        animController = GetComponent<PlayerAnimationController>();
+           // set the sword to the right hand
+        transform.parent = playerRightHand.transform;
+        // position: -0.493, 0.066, -0.13
+        // rotation: 49.5, -28.7, 150.7
+        transform.localPosition = new Vector3(-0.493f, 0.066f, -0.13f);
+        transform.localRotation = Quaternion.Euler(49.5f, -28.7f, 150.7f);
+        // turn of line renderer'
+        gunLine = GetComponent<LineRenderer>();
+        gunLine.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
+
+        transform.parent = playerRightHand.transform;
+        // position: -0.493, 0.066, -0.13
+        // rotation: 49.5, -28.7, 150.7
+        transform.localPosition = new Vector3(-0.493f, 0.066f, -0.13f);
+        transform.localRotation = Quaternion.Euler(49.5f, -28.7f, 150.7f);
+
+
         // read input. bad practice, should be in input handler
         // if left mouse button is pressed, attack
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetButton("Fire1") && timer >= attackCooldown)
         {
             Attack();
         }
+        if (timer >= attackCooldown)
+        {
+            ResetAttack();
+        }
+
+        if (timer >= attackCooldown * effectsDisplayTime)
+        {
+            DisableEffects();
+        }
+    }
+
+    void EnableEffects(){
+        // gun line
+        gunLine.enabled = true;
+    }
+    void DisableEffects(){
+        // gun line
+        gunLine.enabled = false;
     }
     void Attack(){
+        EnableEffects();
+        print("attack!");
         // set is attacking to true
         animController.SetIsAttacking(true);
-        animController.setWeaponType(1);
+        // set weapon type to sword
         // set is attacking to false after attack cooldown
-        Invoke("ResetAttack", attackCooldown);
+
+        timer = 0;
     }
 
     void ResetAttack(){
         animController.SetIsAttacking(false);
+        // turn off line renderer
+
     }
 
     // TODO: handle collisions for damaging enemies

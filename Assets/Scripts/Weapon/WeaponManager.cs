@@ -21,6 +21,11 @@ public class WeaponManager : MonoBehaviour
         //         weapons.Add(weapon);
         //     }
         // }
+        // disable all weapons
+        for (int i = 0; i < weapons.Count; i++)
+        {
+            weapons[i].gameObject.SetActive(false);
+        }
         
     }
 
@@ -32,34 +37,34 @@ public class WeaponManager : MonoBehaviour
         {
             print("0");
             SwitchWeapon(0);
-            animController.setWeaponType(0);
+            animController.SetWeaponType(0);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             print("1");
             SwitchWeapon(1);
-            animController.setWeaponType(1);
+            animController.SetWeaponType(1);
 
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             print("2");
             SwitchWeapon(2);
-            animController.setWeaponType(2);
+            animController.SetWeaponType(2);
 
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             print("3");
-            animController.setWeaponType(3);
             SwitchWeapon(3);
+            animController.SetWeaponType(3);
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             print("4");
             SwitchWeapon(4);
-            animController.setWeaponType(4);
+            animController.SetWeaponType(4);
 
         }
     }
@@ -77,8 +82,9 @@ public class WeaponManager : MonoBehaviour
             return;
         }
         // check if index is valid
-        if (index < 0 || index >= weapons.Count)
+        if (index < 0 || index > weapons.Count)
         {
+            print("invalid weapon index");
             return;
         }
 
@@ -87,7 +93,7 @@ public class WeaponManager : MonoBehaviour
         {
             weapons[i].gameObject.SetActive(false);
         }
-
+        print("switching to weapon " + index);
         // enable selected weapon
         weapons[index-1].gameObject.SetActive(true);
     }

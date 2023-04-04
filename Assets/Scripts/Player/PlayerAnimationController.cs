@@ -20,7 +20,7 @@ public class PlayerAnimationController : MonoBehaviour
     }
 
 // 
-    public void setWeaponType(int type)
+    public void SetWeaponType(int type)
     {
         anim.SetInteger("WeaponType", type);
     }
