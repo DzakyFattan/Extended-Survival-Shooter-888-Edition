@@ -34,16 +34,12 @@ public class PetHealth : MonoBehaviour, IHealth
         currentHealth -= amount;
         // Apply knockback
         petMovement.Knockback();
-        
+        // Play hurt sound
+        petAudio.Play();
 
         if (currentHealth <= 0 && !isDead)
         {
             Death();
-        }
-        else 
-        {
-            // Play hurt sound
-            petAudio.Play();
         }
     }
 
@@ -53,6 +49,7 @@ public class PetHealth : MonoBehaviour, IHealth
 
         // Play death clip
         petAudio.clip = deathClip;
+
         petAudio.Play();
 
         // Remove pet from target list
@@ -60,7 +57,9 @@ public class PetHealth : MonoBehaviour, IHealth
         foreach (GameObject enemy in enemies)
         {
             enemy.GetComponent<EnemyMovement>().RemoveTarget(gameObject);
+            enemy.GetComponent<EnemyAttack>().RemoveTarget(gameObject);
         }
+
 
         Destroy(gameObject);
     }
