@@ -4,38 +4,38 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public Vector3 direction;
+    public float range = 100f;
 
     // public parent game object
-    public GameObject weapon;
-    public GameObject weaponTip;
+    GameObject weapon;
+    GameObject weaponTip;
+    // public projecitle direction
+
     // LineRenderer called gunLine
     LineRenderer gunLine;
   
     // gunline
-    public float range = 100f;
     int shootableMask;
     
     Ray shootRay = new Ray();                                   
-    RaycastHit shootHit; 
+    RaycastHit shootHit;
     
+    bool enemyHit = false;
     void Awake(){
-
+        weapon = transform.parent.gameObject;
+        weaponTip = weapon.transform.Find("Tip").gameObject;
         transform.parent = weaponTip.transform;
         transform.localPosition = new Vector3(0, 0, 0);
         
         // set the gunLine to the LineRenderer component
         gunLine = GetComponent<LineRenderer>();
-        // set the gunLine to the right hand
-        // set local position
-        // turn of line renderer
-        gunLine.enabled = true;
 
         shootableMask = LayerMask.GetMask("Shootable");
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    
+    void OnEnable(){
+        enemyHit = false;
     }
 
     // Update is called once per frame
@@ -52,10 +52,11 @@ public class Projectile : MonoBehaviour
         if(Physics.Raycast(shootRay, out shootHit, range, shootableMask)){
             EnemyHealth enemyHealth = shootHit.collider.GetComponent<EnemyHealth>();
 
-            if (enemyHealth != null)
+            if (enemyHealth != null && enemyHit == false)
             {
                 print("enemy got hit!");
                 enemyHealth.TakeDamage(50, shootHit.point);
+                enemyHit = true;
             }
             gunLine.SetPosition(1, shootHit.point);
         }

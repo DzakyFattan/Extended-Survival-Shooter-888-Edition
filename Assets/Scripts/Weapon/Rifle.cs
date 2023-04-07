@@ -9,34 +9,24 @@ public class Rifle : Weapon
     public PlayerAnimationController animController;
     // get the player right hand
     public GameObject playerRightHand;
-
+    public GameObject projectile;
 
     // set attack cooldown and damage
     public float attackCooldown = 0.5f;
-    public int damage = 10;
+    float effectsDisplayTime = 0.2f;
                            
 
     float timer = 0;
-    float effectsDisplayTime = 0.2f;
     void Awake()
     {
         // set the sword to the right hand
         transform.parent = playerRightHand.transform;
-        // position: -0.493, 0.066, -0.13
-        // rotation: 49.5, -28.7, 140
-        transform.localPosition = new Vector3(-0.493f, 0.066f, -0.13f);
-        transform.localRotation = Quaternion.Euler(49.5f, -28.7f, 140f);
-
     }
 
     // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
-
-        transform.parent = playerRightHand.transform;
-        // position: -0.493, 0.066, -0.13
-        // rotation: 49.5, -28.7, 140
         transform.localPosition = new Vector3(-0.493f, 0.066f, -0.13f);
         transform.localRotation = Quaternion.Euler(49.5f, -28.7f, 140f);
 
@@ -47,34 +37,28 @@ public class Rifle : Weapon
         {
             Attack();
         }
-        if (timer >= attackCooldown)
+        if (timer >= attackCooldown * effectsDisplayTime)
         {
             ResetAttack();
         }
 
-        if (timer >= attackCooldown * effectsDisplayTime)
-        {
-            DisableEffects();
+        if(timer >= attackCooldown){
+            animController.SetIsAttacking(false);
         }
 
     }
-
-    void DisableEffects(){
-        // gun line
-    }
     void Attack(){
-        print("attack!");
         // set is attacking to true
         animController.SetIsAttacking(true);
+        // enable projectile
+        projectile.SetActive(true);
 
         timer = 0;
     }
 
     void ResetAttack(){
-        animController.SetIsAttacking(false);
-        // turn off line renderer
+        projectile.SetActive(false);
 
     }
 
-    // TODO: handle collisions for damaging enemies
 }
