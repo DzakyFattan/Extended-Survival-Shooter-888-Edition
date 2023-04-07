@@ -13,7 +13,8 @@ public class Shotgun : Weapon
     // set attack cooldown and damage
     public float attackCooldown = 0.5f;
     public int damage = 10;
-    
+                            
+
     float timer = 0;
     void Awake()
     {
@@ -23,6 +24,7 @@ public class Shotgun : Weapon
         // rotation: 34.7, -23.7, 151.4
         transform.localPosition = new Vector3(-0.321f, 0.11f, -0.074f);
         transform.localRotation = Quaternion.Euler(34.7f, -23.7f, 151.4f);
+
     }
 
     // Update is called once per frame
@@ -54,7 +56,7 @@ public class Shotgun : Weapon
         animController.SetIsAttacking(true);
         // set weapon type to sword
         // set is attacking to false after attack cooldown
-
+            
         timer = 0;
     }
 

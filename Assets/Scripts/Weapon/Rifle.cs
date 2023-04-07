@@ -10,26 +10,23 @@ public class Rifle : Weapon
     // get the player right hand
     public GameObject playerRightHand;
 
+
     // set attack cooldown and damage
     public float attackCooldown = 0.5f;
     public int damage = 10;
-    
-    // gunline
-    public LineRenderer gunLine;
+                           
 
     float timer = 0;
     float effectsDisplayTime = 0.2f;
     void Awake()
     {
-           // set the sword to the right hand
+        // set the sword to the right hand
         transform.parent = playerRightHand.transform;
         // position: -0.493, 0.066, -0.13
         // rotation: 49.5, -28.7, 150.7
         transform.localPosition = new Vector3(-0.493f, 0.066f, -0.13f);
         transform.localRotation = Quaternion.Euler(49.5f, -28.7f, 150.7f);
-        // turn of line renderer'
-        gunLine = GetComponent<LineRenderer>();
-        gunLine.enabled = false;
+
     }
 
     // Update is called once per frame
@@ -59,23 +56,16 @@ public class Rifle : Weapon
         {
             DisableEffects();
         }
+
     }
 
-    void EnableEffects(){
-        // gun line
-        gunLine.enabled = true;
-    }
     void DisableEffects(){
         // gun line
-        gunLine.enabled = false;
     }
     void Attack(){
-        EnableEffects();
         print("attack!");
         // set is attacking to true
         animController.SetIsAttacking(true);
-        // set weapon type to sword
-        // set is attacking to false after attack cooldown
 
         timer = 0;
     }
