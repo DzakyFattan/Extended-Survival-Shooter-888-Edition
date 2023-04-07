@@ -10,6 +10,7 @@ public class Bow : Weapon
     // get the player right hand
     public GameObject playerRightHand;
     public GameObject playerLeftHand;
+    public GameObject ArrowPrefab;
 
     // set attack cooldown and damage
     public float attackCooldown = 0.5f;
@@ -53,8 +54,11 @@ public class Bow : Weapon
         print("attack!");
         // set is attacking to true
         animController.SetIsAttacking(true);
-        // set weapon type to sword
-        // set is attacking to false after attack cooldown
+        // create new arrow. rotate 90 degrees to the left based on the rotation of the bow
+        GameObject arrow = Instantiate(ArrowPrefab, transform.position, transform.rotation * Quaternion.Euler(0, 0, 90));
+        // give it a velocity based on the rotation of the bow to vector3(1,0,0)
+        arrow.GetComponent<Rigidbody>().velocity =  transform.rotation * new Vector3(-1,0,0)* 10;
+
 
         timer = 0;
     }
@@ -63,5 +67,4 @@ public class Bow : Weapon
         animController.SetIsAttacking(false);
     }
 
-    // TODO: handle collisions for damaging enemies
 }
