@@ -23,9 +23,9 @@ public class Rifle : Weapon
         // set the sword to the right hand
         transform.parent = playerRightHand.transform;
         // position: -0.493, 0.066, -0.13
-        // rotation: 49.5, -28.7, 150.7
+        // rotation: 49.5, -28.7, 140
         transform.localPosition = new Vector3(-0.493f, 0.066f, -0.13f);
-        transform.localRotation = Quaternion.Euler(49.5f, -28.7f, 150.7f);
+        transform.localRotation = Quaternion.Euler(49.5f, -28.7f, 140f);
 
     }
 
@@ -36,9 +36,9 @@ public class Rifle : Weapon
 
         transform.parent = playerRightHand.transform;
         // position: -0.493, 0.066, -0.13
-        // rotation: 49.5, -28.7, 150.7
+        // rotation: 49.5, -28.7, 140
         transform.localPosition = new Vector3(-0.493f, 0.066f, -0.13f);
-        transform.localRotation = Quaternion.Euler(49.5f, -28.7f, 150.7f);
+        transform.localRotation = Quaternion.Euler(49.5f, -28.7f, 140f);
 
 
         // read input. bad practice, should be in input handler

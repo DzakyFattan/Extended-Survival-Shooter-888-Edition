@@ -29,11 +29,12 @@ public class Projectile : MonoBehaviour
         // set local position
         // turn of line renderer
         gunLine.enabled = true;
+
+        shootableMask = LayerMask.GetMask("Shootable");
     }
     // Start is called before the first frame update
     void Start()
     {
-    
         
     }
 
@@ -46,26 +47,20 @@ public class Projectile : MonoBehaviour
         gunLine.SetPosition(0, transform.position);
 
 
-        // shootRay.origin = transform.position;
-        // shootRay.direction = transform.forward;
-        // if(Physics.Raycast(shootRay, out shootHit, range, shootableMask)){
-        //     EnemyHealth enemyHealth = shootHit.collider.GetComponent<EnemyHealth>();
+        shootRay.origin = transform.position;
+        shootRay.direction = direction;
+        if(Physics.Raycast(shootRay, out shootHit, range, shootableMask)){
+            EnemyHealth enemyHealth = shootHit.collider.GetComponent<EnemyHealth>();
 
-        //     if (enemyHealth != null)
-        //     {
-        //         enemyHealth.TakeDamage(50, shootHit.point);
-        //     }
-
-
-
-        //     gunLine.SetPosition(1, shootHit.point);
-        // }
-        // else{
-
-            // set direction 1,0,0 based on the transform
+            if (enemyHealth != null)
+            {
+                print("enemy got hit!");
+                enemyHealth.TakeDamage(50, shootHit.point);
+            }
+            gunLine.SetPosition(1, shootHit.point);
+        }
+        else{
             gunLine.SetPosition(1, transform.position + direction * range);
-        // }
-        
-        
+        }
     }
 }
