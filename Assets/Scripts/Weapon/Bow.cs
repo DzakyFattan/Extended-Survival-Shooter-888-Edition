@@ -11,12 +11,16 @@ public class Bow : Weapon
     public GameObject playerRightHand;
     public GameObject playerLeftHand;
     public GameObject ArrowPrefab;
+    // slider ui bowStrength
+    public GameObject bowStrengthSlider;
 
     // set attack cooldown and damage
     public float attackCooldown = 0.5f;
     public int damage = 10;
-    
-    float timer = 0;
+    public int maximumVelocity = 50;
+    bool isHoldingButton = false;
+
+    int velocity = 0;
     void Awake()
     {
            // set the sword to the right hand
@@ -30,7 +34,6 @@ public class Bow : Weapon
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
 
         transform.parent = playerLeftHand.transform;
         // position: 0, 0.06, 0.03
@@ -40,14 +43,36 @@ public class Bow : Weapon
 
 
         // read input. bad practice, should be in input handler
-        // if left mouse button is pressed, attack
-        if (Input.GetButton("Fire1") && timer >= attackCooldown)
-        {
-            Attack();
+        // read press and hold right mouse button. on release, attack based on duration of press
+        if(!isHoldingButton && Input.GetMouseButtonDown(1)){
+            isHoldingButton = true;
+            print("holding");
+            animController.SetIsAttacking(true);
         }
-        if (timer >= attackCooldown)
-        {
-            ResetAttack();
+        if(Input.GetMouseButtonUp(1)){
+            isHoldingButton = false;
+            print("released");
+            animController.SetIsAttacking(false);
+
+        }
+    }
+    // fixedUpdate
+    void FixedUpdate(){
+        if(isHoldingButton){
+            // increase velocity
+            velocity += 1;
+            // set slider value
+            bowStrengthSlider.GetComponent<UnityEngine.UI.Slider>().value = 100 * velocity / maximumVelocity;
+            // clamp velocity
+            velocity = Mathf.Clamp(velocity, 0, maximumVelocity);
+        }
+        if(!isHoldingButton && velocity > 0){
+            // attack
+            Attack();
+            // reset velocity
+            velocity = 0;
+            // set slider value
+            bowStrengthSlider.GetComponent<UnityEngine.UI.Slider>().value = 0;
         }
     }
     void Attack(){
@@ -57,14 +82,7 @@ public class Bow : Weapon
         // create new arrow. rotate 90 degrees to the left based on the rotation of the bow
         GameObject arrow = Instantiate(ArrowPrefab, transform.position, transform.rotation * Quaternion.Euler(0, 0, 90));
         // give it a velocity based on the rotation of the bow to vector3(1,0,0)
-        arrow.GetComponent<Rigidbody>().velocity =  transform.rotation * new Vector3(-1,0,0)* 10;
-
-
-        timer = 0;
-    }
-
-    void ResetAttack(){
-        animController.SetIsAttacking(false);
+        arrow.GetComponent<Rigidbody>().velocity =  transform.rotation * new Vector3(-1,0,0)* velocity;
     }
 
 }
