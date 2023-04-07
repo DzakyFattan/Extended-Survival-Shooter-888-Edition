@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,8 @@ public class PetManager : MonoBehaviour
     GameObject[] petPrefabs;
 
     private GameObject[] activePets;
+    // public event EventHandler killAllPets;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +24,6 @@ public class PetManager : MonoBehaviour
     void Update()
     {
         // Spawn pet based on number pressed
-
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             SpawnPet(0);
@@ -34,7 +36,6 @@ public class PetManager : MonoBehaviour
         {
             SpawnPet(2);
         }
-
     }
 
     void SpawnPet(int petIndex)

@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 5845464212613403778}
   - component: {fileID: 5845464212613403780}
   - component: {fileID: 1098184265478240298}
+  - component: {fileID: -5115141175470005326}
   m_Layer: 0
   m_Name: HealSlime
   m_TagString: Pet
@@ -234,6 +235,20 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &-5115141175470005326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061878770390564375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c8978449a54d7f48bcab9505b64477d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 50
+  currentHealth: 0
 --- !u!1 &1748481985138953871
 GameObject:
   m_ObjectHideFlags: 0
