@@ -30,6 +30,18 @@ public class Bow : Weapon
         transform.localPosition = new Vector3(0, 0.06f, 0.03f);
         transform.localRotation = Quaternion.Euler(-18.8f, 0, -83.5f);
     }
+    // ondisable
+    void OnDisable(){
+        // reset velocity
+        velocity = 0;
+        // set slider value
+        bowStrengthSlider.GetComponent<UnityEngine.UI.Slider>().value = 0;
+        bowStrengthSlider.SetActive(false);
+    }
+    void OnEnable(){
+        bowStrengthSlider.SetActive(true);
+
+    }
 
     // Update is called once per frame
     void Update()
