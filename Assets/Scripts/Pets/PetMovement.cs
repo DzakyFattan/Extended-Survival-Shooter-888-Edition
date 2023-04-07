@@ -41,4 +41,15 @@ public class PetMovement : MonoBehaviour
     {
         target = newTarget;
     }
+
+    public void Knockback()
+    {
+        // Knockback the pet in the direction it is facing
+        Vector3 direction = transform.forward * -1;
+        direction.y = 0;
+        direction.Normalize();
+        
+        // Apply knockback force
+        GetComponent<Rigidbody>().AddForce(direction * 700);
+    }
 }

@@ -26,7 +26,7 @@ public class EnemyAttack : MonoBehaviour
 
     void OnTriggerEnter (Collider other)
     {
-        if(other.gameObject == player || other.gameObject.tag == "Pet" && other.isTrigger == false)
+        if((other.gameObject == player && other.isTrigger == false) || other.gameObject.tag == "Pet")
         {
             targetInRange = true;
             target = other.gameObject;
@@ -35,10 +35,9 @@ public class EnemyAttack : MonoBehaviour
 
     void OnTriggerExit (Collider other)
     {
-        if(other.gameObject == player || other.gameObject.tag == "Pet" && other.isTrigger == false)
+        if((other.gameObject == player && other.isTrigger == false) || other.gameObject.tag == "Pet")
         {
             targetInRange = false;
-            target = null;
         }
     }
 
@@ -69,14 +68,10 @@ public class EnemyAttack : MonoBehaviour
             return;
         }
 
-        if(target.tag == "Pet")
+        target.GetComponent<IHealth>().TakeDamage(attackDamage);
+        if (target.tag == "Pet")
         {
-            target.GetComponent<PetHealth>().TakeDamage(attackDamage);
             target.transform.LookAt(transform);
-        }
-        else if(target.tag == "Player")
-        {
-            playerHealth.TakeDamage(attackDamage);
         }
     }
 }

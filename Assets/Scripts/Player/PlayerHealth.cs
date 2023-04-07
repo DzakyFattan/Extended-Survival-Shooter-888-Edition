@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour, IHealth
 {
     public int startingHealth = 100;
     public int currentHealth;
@@ -74,7 +74,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
 
-    void Death()
+    public void Death()
     {
         isDead = true;
 

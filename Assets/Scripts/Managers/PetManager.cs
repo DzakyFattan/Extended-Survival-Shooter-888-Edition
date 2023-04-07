@@ -36,6 +36,10 @@ public class PetManager : MonoBehaviour
         {
             SpawnPet(2);
         }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            KillAllPets();
+        }
     }
 
     void SpawnPet(int petIndex)
@@ -63,5 +67,16 @@ public class PetManager : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void KillAllPets()
+    {
+        for (int i = 0; i < petPositions.Length; i++)
+        {
+            if (activePets[i] != null)
+            {
+                activePets[i].GetComponent<PetHealth>().Death();
+            }
+        }
     }
 }

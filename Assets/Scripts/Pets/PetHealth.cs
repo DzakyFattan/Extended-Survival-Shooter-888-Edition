@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class PetHealth : MonoBehaviour
+public class PetHealth : MonoBehaviour, IHealth
 {
 
     public int startingHealth = 50;
     public int currentHealth;
+    public AudioClip deathClip;
 
     private PetMovement petMovement;
     bool isDead = false;
     Animator anim;
+    private AudioSource petAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,7 @@ public class PetHealth : MonoBehaviour
         anim = GetComponent<Animator>();
         petMovement = GetComponent<PetMovement>();
         currentHealth = startingHealth;
+        petAudio = GetComponent<AudioSource>();
 
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemies)
@@ -30,18 +32,28 @@ public class PetHealth : MonoBehaviour
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
-        anim.SetBool("IsMoving", false);
-        anim.SetTrigger("Hurt");
+        // Apply knockback
+        petMovement.Knockback();
+        
 
         if (currentHealth <= 0 && !isDead)
         {
             Death();
         }
+        else 
+        {
+            // Play hurt sound
+            petAudio.Play();
+        }
     }
 
-    void Death()
+    public void Death()
     {
         isDead = true;
+
+        // Play death clip
+        petAudio.clip = deathClip;
+        petAudio.Play();
 
         // Remove pet from target list
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -49,7 +61,7 @@ public class PetHealth : MonoBehaviour
         {
             enemy.GetComponent<EnemyMovement>().RemoveTarget(gameObject);
         }
-        // Destroy pet
+
         Destroy(gameObject);
     }
 }
