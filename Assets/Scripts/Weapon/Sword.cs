@@ -62,4 +62,16 @@ public class Sword : Weapon
     }
 
     // TODO: handle collisions for damaging enemies
+    void OnTriggerEnter(Collider other){
+        // if layer === "Shootable"
+        if (other.gameObject.layer == 6){        
+            print("enemy hit!");
+            EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
+            if (enemyHealth != null)
+            {
+                print("enemy got hit!");
+                enemyHealth.TakeDamage(damage, other.transform.position);
+            }
+        }
+    }
 }
