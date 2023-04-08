@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MazeQuestManager : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class MazeQuestManager : MonoBehaviour
         // scoreSO.Value = scoreSO.Value + timeSO.Value;
         // print("Score: " + scoreSO.Value);
         print("Time: " + timeSO.Value);
-        // TODO: change scene
+        // TODO: change scene to EndQuestScene
+        SceneManager.LoadSceneAsync("EndQuestScene");
     }
 }
