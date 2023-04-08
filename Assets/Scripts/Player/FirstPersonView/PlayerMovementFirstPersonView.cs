@@ -64,8 +64,6 @@ public class PlayerMovementFirstPersonView : PlayerMovement
 
         float differenceX = Input.GetAxis("Mouse X") - prevMouseX;
         float differenceY = Input.GetAxis("Mouse Y") - prevMouseY;
-        print(differenceX);
-        print(differenceY);
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x - differenceY, transform.rotation.eulerAngles.y + differenceX, 0);
 
     }
