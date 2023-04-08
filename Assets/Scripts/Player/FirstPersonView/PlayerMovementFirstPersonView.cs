@@ -11,7 +11,7 @@ public class PlayerMovementFirstPersonView : PlayerMovement
 
 
     int floorMask;
-    float camRayLength = 100f;
+    // float camRayLength = 100f;
 
     float prevMouseX;
     float prevMouseY;

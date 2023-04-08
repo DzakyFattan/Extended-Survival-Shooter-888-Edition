@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EnemyAttack : MonoBehaviour
 {
@@ -11,7 +12,8 @@ public class EnemyAttack : MonoBehaviour
     GameObject player;
     PlayerHealth playerHealth;
     EnemyHealth enemyHealth;
-    bool playerInRange;
+    private List<GameObject> targets;
+    bool targetInRange;
     float timer;
 
 
@@ -21,21 +23,32 @@ public class EnemyAttack : MonoBehaviour
         playerHealth = player.GetComponent <PlayerHealth> ();
         enemyHealth = GetComponent<EnemyHealth>();
         anim = GetComponent <Animator> ();
+        targets = new List<GameObject>();
     }
 
     void OnTriggerEnter (Collider other)
     {
+        if (other.gameObject.tag == "Pet")
+        {
+            targets.Add(other.gameObject);
+        }
+        
         if(other.gameObject == player && other.isTrigger == false)
         {
-            playerInRange = true;
+            targets.Add(other.gameObject);
         }
     }
 
     void OnTriggerExit (Collider other)
     {
-        if(other.gameObject == player)
+        if (other.gameObject.tag == "Pet")
         {
-            playerInRange = false;
+            targets.Remove(other.gameObject);
+        }
+        
+        if(other.gameObject == player && other.isTrigger == false)
+        {
+            targets.Remove(other.gameObject);
         }
     }
 
@@ -44,25 +57,35 @@ public class EnemyAttack : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if(timer >= timeBetweenAttacks && playerInRange && enemyHealth.currentHealth > 0)
+        if(timer >= timeBetweenAttacks && enemyHealth.currentHealth > 0)
         {
-            Attack ();
+            Attack();
         }
 
         if (playerHealth.currentHealth <= 0)
         {
-            anim.SetTrigger ("PlayerDead");
+            anim.SetTrigger("PlayerDead");
         }
     }
 
 
     void Attack ()
     {
+
+        // Precondition: targetInRange == true
         timer = 0f;
 
-        if (playerHealth.currentHealth > 0)
+        foreach (GameObject t in targets.ToArray())
         {
-            playerHealth.TakeDamage (attackDamage);
+            if (t.tag == "Pet") {
+                t.transform.LookAt(transform);
+            }
+            t.GetComponent<IHealth>().TakeDamage(attackDamage);
         }
+    }
+
+    public void RemoveTarget(GameObject oldTarget)
+    {
+        targets.Remove(oldTarget);
     }
 }
