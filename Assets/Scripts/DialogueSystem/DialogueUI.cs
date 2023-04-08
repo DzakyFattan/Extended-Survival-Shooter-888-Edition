@@ -1,12 +1,11 @@
 using System.Collections;
 // using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
 
 public class DialogueUI : MonoBehaviour
 {
-  [SerializeField] private GameObject HUDCanvas;
-  [SerializeField] private GameObject EnemyManager;
   [SerializeField] private GameObject dialogueBox;
   [SerializeField] private TMP_Text textLabel;
   [SerializeField] private DialogueObject dialogueObject;
@@ -18,14 +17,13 @@ public class DialogueUI : MonoBehaviour
   void Start()
   {
     typewriterEffect = GetComponent<TypewriterEffect>();
-    CloseDialogue();
+    dialogueBox.SetActive(false);
+    textLabel.text = string.Empty;
     showDialogue(dialogueObject);
   }
 
   public void showDialogue(DialogueObject dialogue)
   {
-    HUDCanvas.SetActive(false);
-    EnemyManager.SetActive(false);
     dialogueBox.SetActive(true);
     StartCoroutine(StepThroughDialogue(dialogue));
   }
@@ -45,7 +43,6 @@ public class DialogueUI : MonoBehaviour
   {
     dialogueBox.SetActive(false);
     textLabel.text = string.Empty;
-    HUDCanvas.SetActive(true);
-    EnemyManager.SetActive(true);
+    SceneManager.LoadSceneAsync("Quest2");
   }
 }
