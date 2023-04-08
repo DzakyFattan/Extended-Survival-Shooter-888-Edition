@@ -10,7 +10,7 @@ public class MainMenuManager : MonoBehaviour
   {
     // unload the current scene
     // SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
-    SceneManager.LoadSceneAsync("Quest3");
+    SceneManager.LoadSceneAsync("OpeningScene");
   }
 
   public void LoadQuestMenu()
