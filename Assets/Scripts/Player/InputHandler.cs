@@ -5,7 +5,7 @@ using System.Collections;
 public class InputHandler : MonoBehaviour
 {
     public PlayerMovement playerMovement;
-    public PlayerShooting playerShooting;
+    // public PlayerShooting playerShooting;
 
     //Queue untuk menyimpan list command
     Queue<Command> commands = new Queue<Command>();
@@ -74,14 +74,15 @@ public class InputHandler : MonoBehaviour
     
     Command InputShootHandling()
     {
+        return null;
         //Jika menembak trigger shoot command
-        if (Input.GetButtonDown("Fire1"))
-        {
-            return new ShootCommand(playerShooting);
-        }
-        else
-        {
-            return null;
-        }
+        // if (Input.GetButtonDown("Fire1"))
+        // {
+        //     return new ShootCommand(playerShooting);
+        // }
+        // else
+        // {
+        //     return null;
+        // }
     }
 }

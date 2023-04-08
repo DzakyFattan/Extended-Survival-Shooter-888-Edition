@@ -43,6 +43,6 @@ public class DialogueUI : MonoBehaviour
   {
     dialogueBox.SetActive(false);
     textLabel.text = string.Empty;
-    SceneManager.LoadSceneAsync("Quest2");
+    SceneManager.LoadSceneAsync("HomeWorld");
   }
 }

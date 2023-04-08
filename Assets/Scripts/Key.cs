@@ -31,14 +31,14 @@ public class Key : MonoBehaviour
       GameObject[] coins = GameObject.FindGameObjectsWithTag("Coin");
 
       // update key counter text
-      print("Key Left: " + coins.Length);
+      print("Key Left: " +(coins.Length - 1).ToString());
       // keyLeft.text = "Key Left: " + coins.Length;
       // destroy key
 
       // if no key left, end game
       // tag = "GameMananger"
       // get game object with tag "GameManager"
-      if (coins.Length == 0)
+      if (coins.Length == 1)
       {
         GameObject gameManager = GameObject.FindGameObjectWithTag("QuestManager");
         // call function from game manager

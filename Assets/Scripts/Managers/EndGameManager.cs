@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class EndGameManager : MonoBehaviour
 {
 //   will showcase score and time for 5 second, on update count down go back to home world scene
@@ -24,8 +25,9 @@ public Text allText;
         timeLeft -= Time.deltaTime;
         if (timeLeft < 0)
         {
-            // TODO: change scene
             print("Time: " + timeLeft);
+            // TODO: save game
+            SceneManager.LoadSceneAsync("HomeWorld");
         }
     }
 

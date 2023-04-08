@@ -54,7 +54,8 @@ public class PlayerMovementFirstPersonView : PlayerMovement
     // move forward based on the player rotation
     movement.Set(h, 0f, v);
 
-    movement = transform.rotation * movement;
+    // move based on rotation except on y axis
+    movement = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0) * movement;
     movement = movement.normalized * speed * Time.deltaTime;
 
     playerRigidbody.MovePosition(transform.position + movement);
