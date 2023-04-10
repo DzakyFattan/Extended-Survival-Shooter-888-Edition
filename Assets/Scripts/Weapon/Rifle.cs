@@ -27,8 +27,10 @@ public class Rifle : Weapon
     void Update()
     {
         timer += Time.deltaTime;
-        transform.localPosition = new Vector3(-0.493f, 0.066f, -0.13f);
-        transform.localRotation = Quaternion.Euler(49.5f, -28.7f, 140f);
+        // position: -0.1 -0.08, -0.03
+        transform.localPosition = new Vector3(-0.1f, -0.08f, -0.03f);
+        // rotation: -3.4, 0.1, 95.3
+        transform.localRotation = Quaternion.Euler(-3.4f, 0.1f, 95.3f);
 
 
         // read input. bad practice, should be in input handler

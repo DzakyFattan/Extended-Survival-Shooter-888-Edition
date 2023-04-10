@@ -1845,6 +1845,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1022568151095249217, guid: 5432b88fb4e5890ad98d0b82895597b7, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4844663555824158703, guid: 5432b88fb4e5890ad98d0b82895597b7, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -1907,7 +1911,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8043385700625246910, guid: 5432b88fb4e5890ad98d0b82895597b7, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8043385700625246911, guid: 5432b88fb4e5890ad98d0b82895597b7, type: 3}
       propertyPath: playerMovement

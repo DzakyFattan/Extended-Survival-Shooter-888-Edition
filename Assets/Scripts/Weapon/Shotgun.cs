@@ -26,10 +26,10 @@ public class Shotgun : Weapon
     }
     void Start(){
         transform.parent = playerRightHand.transform;
-        // position: -0.321, 0.11, -0.074
-        // rotation: 34.7, -23.7, 151.4
-        transform.localPosition = new Vector3(-0.321f, 0.11f, -0.074f);
-        transform.localRotation = Quaternion.Euler(34.7f, -23.7f, 151.4f);
+        // position: -0.1 -0.08, -0.03
+        transform.localPosition = new Vector3(-0.1f, -0.08f, -0.03f);
+        // rotation: -3.4, 0.1, 95.3
+        transform.localRotation = Quaternion.Euler(-3.4f, 0.1f, 95.3f);
     }
 
     // Update is called once per frame
@@ -38,10 +38,10 @@ public class Shotgun : Weapon
         timer += Time.deltaTime;
 
         transform.parent = playerRightHand.transform;
-        // position: -0.321, 0.11, -0.074
-        // rotation: 34.7, -23.7, 151.4
-        transform.localPosition = new Vector3(-0.321f, 0.11f, -0.074f);
-        transform.localRotation = Quaternion.Euler(34.7f, -23.7f, 151.4f);
+        // position: -0.1 -0.08, -0.03
+        transform.localPosition = new Vector3(-0.1f, -0.08f, -0.03f);
+        // rotation: -3.4, 0.1, 95.3
+        transform.localRotation = Quaternion.Euler(-3.4f, 0.1f, 95.3f);
         // read input. bad practice, should be in input handler
         // if left mouse button is pressed, attack
         if (Input.GetButton("Fire1") && timer >= attackCooldown)

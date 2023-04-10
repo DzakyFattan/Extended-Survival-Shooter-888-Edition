@@ -41,6 +41,7 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        gunLine.enabled = false;
         Vector3 direction = transform.TransformDirection(ShootDirection);
 
         // update gunline location
@@ -63,5 +64,6 @@ public class Projectile : MonoBehaviour
         else{
             gunLine.SetPosition(1, transform.position + direction * range);
         }
+        gunLine.enabled = true;
     }
 }
