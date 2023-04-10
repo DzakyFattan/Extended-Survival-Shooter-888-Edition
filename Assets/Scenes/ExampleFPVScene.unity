@@ -1262,6 +1262,10 @@ PrefabInstance:
       propertyPath: playerMovement
       value: 
       objectReference: {fileID: 1010148543}
+    - target: {fileID: 9175320269738630564, guid: 5432b88fb4e5890ad98d0b82895597b7, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8043385700625246904, guid: 5432b88fb4e5890ad98d0b82895597b7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5432b88fb4e5890ad98d0b82895597b7, type: 3}
