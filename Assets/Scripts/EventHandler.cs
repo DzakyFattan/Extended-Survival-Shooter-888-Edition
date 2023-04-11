@@ -9,18 +9,26 @@ public class EventHandler : MonoBehaviour
     {
         MainMenuManager.onScoreButtonClicked += LoadScoreboard;
         MainMenuManager.onExitButtonClicked += QuitGame;
+        MainMenuManager.onScoreboardBackButtonClicked += BackToMainMenu;
     }
 
     private void OnDisable()
     {
         MainMenuManager.onScoreButtonClicked -= LoadScoreboard;
         MainMenuManager.onExitButtonClicked -= QuitGame;
+        MainMenuManager.onScoreboardBackButtonClicked -= BackToMainMenu;
     }
 
     public void LoadScoreboard()
     {
         Debug.Log("Load Scoreboard");
         scoreboardUI.SetActive(true);
+    }
+
+    public void BackToMainMenu()
+    {
+        Debug.Log("Back to Main Menu");
+        scoreboardUI.SetActive(false);
     }
 
     public void QuitGame()

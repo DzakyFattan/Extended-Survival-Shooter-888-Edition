@@ -12,16 +12,20 @@ public class MainMenuManager : MonoBehaviour
     public Button scoreboardButton;
     public Button quitButton;
 
+    public Button scoreboardBackButton;
+
     public delegate void ButtonClicked();
 
     public static event ButtonClicked onScoreButtonClicked;
     public static event ButtonClicked onExitButtonClicked;
+    public static event ButtonClicked onScoreboardBackButtonClicked;
     void Start()
     {
         newGameButton.onClick.AddListener(LoadFirstQuest);
         questsButton.onClick.AddListener(LoadQuestMenu);
         scoreboardButton.onClick.AddListener(LoadScoreboard);
         quitButton.onClick.AddListener(QuitGame);
+        scoreboardBackButton.onClick.AddListener(BackToMainMenu);
     }
     public void LoadFirstQuest()
     {
@@ -46,6 +50,13 @@ public class MainMenuManager : MonoBehaviour
         }
     }
 
+    public void BackToMainMenu()
+    {
+        if (onScoreboardBackButtonClicked != null)
+        {
+            onScoreboardBackButtonClicked?.Invoke();
+        }
+    }
     public void QuitGame()
     {
         if (onExitButtonClicked != null)
