@@ -26,6 +26,6 @@ public class EnemyManager : MonoBehaviour{
        int spawnEnemy = Random.Range(0, 3);
 
         //Memduplikasi enemy
-        // Factory.FactoryMethod(spawnEnemy);
+        Factory.FactoryMethod(spawnEnemy);
     }
 }

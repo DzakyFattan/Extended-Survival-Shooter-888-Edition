@@ -39,12 +39,15 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage (int amount, Vector3 hitPoint)
     {
+
+        print("current health");
+        print(currentHealth);
         if (isDead)
             return;
 
         enemyAudio.Play ();
 
-        currentHealth -= amount;
+        currentHealth -= 10;
 
         hitParticles.transform.position = hitPoint;
         hitParticles.Play();
@@ -64,7 +67,7 @@ public class EnemyHealth : MonoBehaviour
 
         capsuleCollider.isTrigger = true;
 
-        anim.SetTrigger ("Dead");
+        anim.SetTrigger("Dead");
 
         enemyAudio.clip = deathClip;
         enemyAudio.Play ();

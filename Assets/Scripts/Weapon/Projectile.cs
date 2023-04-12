@@ -39,7 +39,7 @@ public class Projectile : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         gunLine.enabled = false;
         Vector3 direction = transform.TransformDirection(ShootDirection);

@@ -47,7 +47,6 @@ public class Rifle : Weapon
         if(timer >= attackCooldown){
             animController.SetIsAttacking(false);
         }
-
     }
     void Attack(){
         // set is attacking to true
@@ -60,7 +59,6 @@ public class Rifle : Weapon
 
     void ResetAttack(){
         projectile.SetActive(false);
-
     }
 
 }

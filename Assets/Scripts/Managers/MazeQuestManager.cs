@@ -11,6 +11,7 @@ public class MazeQuestManager : MonoBehaviour
     
     float startTime;
     float endTime;
+    
     void Awake(){
         startTime = Time.time;
     }
