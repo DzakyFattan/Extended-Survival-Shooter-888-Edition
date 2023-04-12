@@ -45,6 +45,12 @@ public float speed = 5f;
         
     }
 
+    void EndGame(){
+        print("end game");
+        GameObject.Find("BossSceneManager").GetComponent<BossSceneManager>().EndGame();
+
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -54,7 +60,7 @@ public float speed = 5f;
         // update the UI slider
         healthSlider.value = health;
         if(health <= 0){
-            // do nothing
+            Invoke("EndGame", 10f);
             return;
         }
 
