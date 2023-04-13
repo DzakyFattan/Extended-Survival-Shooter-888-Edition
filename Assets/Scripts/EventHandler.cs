@@ -1,34 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EventHandler : MonoBehaviour
 {
-    [SerializeField] GameObject scoreboardUI;
+    private static GameObject Instance;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Debug.Log("Destroying duplicate EventHandler");
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Debug.Log("Setting EventHandler");
+            Instance = this.gameObject;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
     private void OnEnable()
     {
         MainMenuManager.onScoreButtonClicked += LoadScoreboard;
         MainMenuManager.onExitButtonClicked += QuitGame;
-        MainMenuManager.onScoreboardBackButtonClicked += BackToMainMenu;
+        ScoreboardManager.onBackButtonClicked += BackToMainMenu;
     }
 
     private void OnDisable()
     {
         MainMenuManager.onScoreButtonClicked -= LoadScoreboard;
         MainMenuManager.onExitButtonClicked -= QuitGame;
-        MainMenuManager.onScoreboardBackButtonClicked -= BackToMainMenu;
+        ScoreboardManager.onBackButtonClicked -= BackToMainMenu;
     }
 
     public void LoadScoreboard()
     {
         Debug.Log("Load Scoreboard");
-        scoreboardUI.SetActive(true);
+        SceneManager.LoadScene("Scoreboard");
     }
 
     public void BackToMainMenu()
     {
         Debug.Log("Back to Main Menu");
-        scoreboardUI.SetActive(false);
+        SceneManager.LoadScene("MainMenuAlt");
     }
 
     public void QuitGame()
