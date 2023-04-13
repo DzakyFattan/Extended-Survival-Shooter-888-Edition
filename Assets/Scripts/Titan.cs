@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class Titan : MonoBehaviour
 {
@@ -57,8 +58,10 @@ public float speed = 5f;
         // get health from EnemyHealth.cs
         int health = GetComponent<EnemyHealth>().currentHealth;
         int startingHealth = GetComponent<EnemyHealth>().startingHealth;
+        float startingHealthFloat = (float) startingHealth;
+        float healthFloat = (float) health;
         // update the UI slider
-        healthSlider.value = health;
+        healthSlider.value = (int) Math.Round((float)(healthFloat / startingHealthFloat) * 100);
         if(health <= 0){
             Invoke("EndGame", 10f);
             return;
@@ -71,6 +74,14 @@ public float speed = 5f;
             // set current action to "Roar"
             currentAction = "Roar";
             lastAttack = Time.time;
+
+
+            transform.localScale = new Vector3(3, 3, 3);
+            damage = damage * 2;
+            attackCooldown = attackCooldown / 2;
+            speed = speed * 2;
+
+
             // set animation to Roar
             animator.SetBool("Idle", false);
             animator.SetBool("Attack", false);
@@ -81,10 +92,7 @@ public float speed = 5f;
         else if(currentAction == "Roar"){
             print("roar");
             // change scale, damage, attack cooldown
-            transform.localScale = new Vector3(3, 3, 3);
-            damage = damage * 2;
-            attackCooldown = attackCooldown / 2;
-            speed = 10f;
+            
 
             // return to idle based on roar cooldown
             if (Time.time - lastAttack > roarCooldown){
@@ -134,8 +142,9 @@ public float speed = 5f;
         else if(currentAction == "Charge"){
             // set animation to Charge
             // update target locked position
-            targetLockedPosition = target.position;
+            targetLockedPosition = new Vector3(target.position.x, transform.position.y, target.position.z);
             transform.LookAt(targetLockedPosition);
+            targetLockedPosition = targetLockedPosition + transform.forward * 5;
 
             // when charge duration is over, change current action to "Dash"
             if (Time.time - lastAttack > attackCooldown + chargeDuration){
@@ -166,7 +175,7 @@ public float speed = 5f;
     // when target touch titan, target take damage
     void OnTriggerEnter(Collider other){
         if (other.tag == "Player"){
-            // other.GetComponent<PlayerHealth>().TakeDamage(damage);
+            other.GetComponent<PlayerHealth>().TakeDamage(0);
         }
     } 
 }
