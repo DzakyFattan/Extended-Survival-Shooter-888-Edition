@@ -175,7 +175,7 @@ public float speed = 5f;
     // when target touch titan, target take damage
     void OnTriggerEnter(Collider other){
         if (other.tag == "Player"){
-            other.GetComponent<PlayerHealth>().TakeDamage(0);
+            other.GetComponent<PlayerHealth>().TakeDamage(damage);
         }
     } 
 }

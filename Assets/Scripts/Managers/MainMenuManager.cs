@@ -24,7 +24,7 @@ public class MainMenuManager : MonoBehaviour
     public void LoadFirstQuest(){
         // unload the current scene
         // SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
-        SceneManager.LoadSceneAsync("OpeningScene");
+        SceneManager.LoadScene("OpeningScene");
     }
 
     public void LoadQuestMenu()
@@ -32,7 +32,7 @@ public class MainMenuManager : MonoBehaviour
         // unload the current scene
         // SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         // load a scene called "QuestMenu"
-        SceneManager.LoadSceneAsync("QuestMenu");
+        SceneManager.LoadScene("QuestMenu");
     }
 
     public void QuitGame()
