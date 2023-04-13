@@ -11,22 +11,32 @@ public class MainMenuManager : MonoBehaviour
     public Button questsButton;
     public Button scoreboardButton;
     public Button quitButton;
+    [SerializeField] Slider volumeSlider;
 
     public delegate void ButtonClicked();
-    public static event ButtonClicked onScoreButtonClicked;
     public static event ButtonClicked onExitButtonClicked;
     void Start()
     {
         newGameButton.onClick.AddListener(LoadFirstQuest);
         questsButton.onClick.AddListener(LoadQuestMenu);
-        scoreboardButton.onClick.AddListener(LoadScoreboard);
         quitButton.onClick.AddListener(QuitGame);
+        if (!PlayerPrefs.HasKey("musicVolume"))
+        {
+            PlayerPrefs.SetFloat("musicVolume", 1);
+            LoadVolumeSetting();
+        }
+        else
+        {
+            LoadVolumeSetting();
+        }
     }
+
+
     public void LoadFirstQuest()
     {
         // unload the current scene
         // SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
-        SceneManager.LoadSceneAsync("OpeningScene");
+        SceneManager.LoadScene("OpeningScene");
     }
 
     public void LoadQuestMenu()
@@ -37,19 +47,27 @@ public class MainMenuManager : MonoBehaviour
         SceneManager.LoadSceneAsync("QuestMenu");
     }
 
-    public void LoadScoreboard()
-    {
-        if (onScoreButtonClicked != null)
-        {
-            onScoreButtonClicked?.Invoke();
-        }
-    }
-
     public void QuitGame()
     {
         if (onExitButtonClicked != null)
         {
             onExitButtonClicked?.Invoke();
         }
+    }
+
+    public void SetVolume()
+    {
+        AudioListener.volume = volumeSlider.value;
+        SaveVolumeSetting();
+    }
+
+    private void LoadVolumeSetting()
+    {
+        volumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
+    }
+
+    private void SaveVolumeSetting()
+    {
+        PlayerPrefs.SetFloat("musicVolume", volumeSlider.value);
     }
 }
