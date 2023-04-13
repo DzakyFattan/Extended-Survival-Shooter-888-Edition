@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+// TODO: move this to Gun.cs
 public class PlayerShooting : MonoBehaviour
 {
     public int damagePerShot = 20;                  
@@ -29,15 +30,15 @@ public class PlayerShooting : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (Input.GetButton("Fire1") && timer >= timeBetweenBullets)
-        {
-            Shoot();
-        }
+        // if (Input.GetButton("Fire1") && timer >= timeBetweenBullets)
+        // {
+        //     Shoot();
+        // }
 
-        if (timer >= timeBetweenBullets * effectsDisplayTime)
-        {
-            DisableEffects();
-        }
+        // if (timer >= timeBetweenBullets * effectsDisplayTime)
+        // {
+        //     DisableEffects();
+        // }
     }
 
     public void DisableEffects()
