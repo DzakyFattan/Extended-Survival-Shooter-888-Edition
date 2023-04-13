@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class CheatManager : MonoBehaviour
 {
-    public string[] cheatNoDamage;
-    public string[] cheatOneHit;
-    public string[] cheatMotherlode;
-    public string[] cheatTwoSpeed;
-    public string[] cheatPetFull;
-    public string[] cheatKillPet;
+    public string cheatNoDamage;
+    public string cheatOneHit;
+    public string cheatMotherlode;
+    public string cheatTwoSpeed;
+    public string cheatPetFull;
+    public string cheatKillPet;
     public int index;
 
     // Start is called before the first frame update
     void Start()
     {
-        cheatNoDamage = new string[] { "b", "a", "g", "u", "v", "i", "x" };
-        cheatOneHit = new string[] { "f", "u", "l", "l", "c", "l", "i", "p" };
-        cheatMotherlode = new string[] { "h", "e", "s", "o", "y", "a", "m" };
-        cheatTwoSpeed = new string[] { "i", "a", "m", "s", "p", "e", "e", "d" };
-        cheatPetFull = new string[] { "p", "e", "t", "f", "u", "l", "l" };
-        cheatKillPet = new string[] { "g", "e", "n", "o", "c", "i", "d", "e" };
+        cheatNoDamage = "bagucvix";
+        cheatOneHit = "fullclip";
+        cheatMotherlode = "hesoyam";
+        cheatTwoSpeed = "iamspeed";
+        cheatPetFull = "petfull";
+        cheatKillPet = "genocide";
         index = 0;
     }
 
