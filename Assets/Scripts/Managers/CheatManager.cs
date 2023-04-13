@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class CheatManager : MonoBehaviour
 {
+    public string[] cheatNoDamage;
+    public string[] cheatOneHit;
+    public string[] cheatMotherlode;
+    public string[] cheatTwoSpeed;
+    public string[] cheatPetFull;
+    public string[] cheatKillPet;
+    public int index;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +31,7 @@ public class CheatManager : MonoBehaviour
         {
             if (Input.anyKeyDown)
             {
-                if (InputGetKeyDown(cheatNoDamage[index]))
+                if (Input.GetKeyDown(cheatNoDamage[index]))
                 {
                     index++;
                     if (index == cheatNoDamage.Length)
@@ -37,7 +45,7 @@ public class CheatManager : MonoBehaviour
                         index = 0;
                     }
                 }
-                else if (InputGetKeyDown(cheatOneHit[index]))
+                else if (Input.GetKeyDown(cheatOneHit[index]))
                 {
                     index++;
                     if (index == cheatOneHit.Length)
@@ -51,7 +59,7 @@ public class CheatManager : MonoBehaviour
                         index = 0;
                     }
                 }
-                else if (InputGetKeyDown(cheatMotherlode[index]))
+                else if (Input.GetKeyDown(cheatMotherlode[index]))
                 {
                     index++;
                     if (index == cheatMotherlode.Length)
@@ -65,7 +73,7 @@ public class CheatManager : MonoBehaviour
                         index = 0;
                     }
                 }
-                else if (InputGetKeyDown(cheatTwoSpeed[index]))
+                else if (Input.GetKeyDown(cheatTwoSpeed[index]))
                 {
                     index++;
                     if (index == cheatTwoSpeed.Length)
@@ -79,7 +87,7 @@ public class CheatManager : MonoBehaviour
                         index = 0;
                     }
                 }
-                else if (InputGetKeyDown(cheatPetFull[index]))
+                else if (Input.GetKeyDown(cheatPetFull[index]))
                 {
                     index++;
                     if (index == cheatPetFull.Length)
@@ -93,7 +101,7 @@ public class CheatManager : MonoBehaviour
                         index = 0;
                     }
                 }
-                else if (InputGetKeyDown(cheatKillPet[index]))
+                else if (Input.GetKeyDown(cheatKillPet[index]))
                 {
                     index++;
                     if (index == cheatKillPet.Length)
