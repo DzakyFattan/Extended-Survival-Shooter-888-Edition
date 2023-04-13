@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class ScoreboardManager : MonoBehaviour
 {
+    private static GameObject Instance;
     private ScoreData scoreData;
     public Button backButton;
     public delegate void ButtonClicked();
@@ -14,6 +15,17 @@ public class ScoreboardManager : MonoBehaviour
 
     void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Debug.Log("Destroying duplicate ScoreboardManager");
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Debug.Log("Setting ScoreboardManager");
+            Instance = this.gameObject;
+            // DontDestroyOnLoad(gameObject);
+        }
         PlayerPrefs.DeleteAll();
         var json = PlayerPrefs.GetString("ScoreData", "{}");
         scoreData = JsonUtility.FromJson<ScoreData>(json);
@@ -44,6 +56,7 @@ public class ScoreboardManager : MonoBehaviour
 
     private void OnDestroy()
     {
+        Debug.Log("ScoreboardManager OnDestroy");
         SaveScoreData();
     }
 
