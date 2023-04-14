@@ -12,6 +12,8 @@ public class PetManager : MonoBehaviour
     GameObject[] petPrefabs;
 
     private GameObject[] activePets;
+
+    private bool chaseMode = false;
     // public event EventHandler killAllPets;
 
     // Start is called before the first frame update
@@ -24,21 +26,25 @@ public class PetManager : MonoBehaviour
     void Update()
     {
         // Spawn pet based on number pressed
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha7))
         {
             SpawnPet(0);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha8))
         {
             SpawnPet(1);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Alpha9))
         {
             SpawnPet(2);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
+        if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             KillAllPets();
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            ChangeMode();
         }
     }
 
@@ -76,6 +82,19 @@ public class PetManager : MonoBehaviour
             if (activePets[i] != null)
             {
                 activePets[i].GetComponent<PetHealth>().Death();
+            }
+        }
+    }
+
+    public void ChangeMode()
+    {
+        chaseMode = !chaseMode;
+        for (int i = 0; i < petPositions.Length; i++)
+        {
+            if (activePets[i] != null)
+            {
+                // Check which prefab this pet is
+                activePets[i].GetComponent<PetMovement>().ChangeMode();
             }
         }
     }

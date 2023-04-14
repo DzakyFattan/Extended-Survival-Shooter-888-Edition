@@ -8,8 +8,6 @@ public class RobotHealth : MonoBehaviour, IHealth
     public int currentHealth;
 
     bool isDead;                                                
-    bool damaged;
-
     Animator anim;
     [SerializeField]
     Slider healthSlider;                                           
@@ -27,8 +25,6 @@ public class RobotHealth : MonoBehaviour, IHealth
 
     public void TakeDamage(int amount)
     {
-        damaged = true;
-
         currentHealth -= amount;
 
         float currentHealthFloat = currentHealth;
