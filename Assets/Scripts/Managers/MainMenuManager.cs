@@ -6,10 +6,6 @@ using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
-
-    public Button newGameButton;
-    public Button questsButton;
-    public Button scoreboardButton;
     public Button quitButton;
     [SerializeField] Slider volumeSlider;
 
@@ -17,8 +13,6 @@ public class MainMenuManager : MonoBehaviour
     public static event ButtonClicked onExitButtonClicked;
     void Start()
     {
-        newGameButton.onClick.AddListener(LoadFirstQuest);
-        questsButton.onClick.AddListener(LoadQuestMenu);
         quitButton.onClick.AddListener(QuitGame);
         if (!PlayerPrefs.HasKey("musicVolume"))
         {
