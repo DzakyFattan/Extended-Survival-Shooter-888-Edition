@@ -31,4 +31,9 @@ public class ImageFadeController : MonoBehaviour
         yield return new WaitForSeconds(durationBeforeComplete);
         onFadeComplete.Invoke();
     }
+
+    public void toLeaderBoard()
+    {
+        Global.loadedFrom = Global.LoadedFrom.End;
+    }
 }

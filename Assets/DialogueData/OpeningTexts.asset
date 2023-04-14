@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: OpeningTexts
   m_EditorClassIdentifier: 
   sentences:
-  - 'Once upon a time... There was a sleepy rat called Jim.
-
-    But Jim had a nightmare'
+  - Once upon a time... There was a sleepy rat called Jim. But Jim had a nightmare
   - Jim got trapped in dreamworld... and must save himself from dream monsters.
   - Jim must fight those enemies to get out, lesgooo!!!
