@@ -35,7 +35,7 @@ public class PetMovement : MonoBehaviour
     {
         // Set desitnation to the right of the player facing
 
-        if (chaseMode)
+        if (!chaseMode)
         {
             // Set target to player
             realTarget = target;
@@ -86,11 +86,11 @@ public class PetMovement : MonoBehaviour
         GetComponent<Rigidbody>().AddForce(direction * 700);
     }
 
-    public void ChangeMode()
+    public void ChangeMode(bool _chaseMode)
     {
         if (chaserPet)
         {
-            chaseMode = !chaseMode;
+            chaseMode = _chaseMode;
         }
     }
 }

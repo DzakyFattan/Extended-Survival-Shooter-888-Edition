@@ -14,6 +14,7 @@ public class PetManager : MonoBehaviour
     private GameObject[] activePets;
 
     private bool chaseMode = false;
+    private int buffDamage = 0;
     // public event EventHandler killAllPets;
 
     // Start is called before the first frame update
@@ -94,8 +95,18 @@ public class PetManager : MonoBehaviour
             if (activePets[i] != null)
             {
                 // Check which prefab this pet is
-                activePets[i].GetComponent<PetMovement>().ChangeMode();
+                activePets[i].GetComponent<PetMovement>().ChangeMode(chaseMode);
             }
         }
+    }
+
+    public int getBuffDamage()
+    {
+        return buffDamage;
+    }
+
+    public void updateBuffDamage(int amount)
+    {
+        buffDamage += amount;
     }
 }

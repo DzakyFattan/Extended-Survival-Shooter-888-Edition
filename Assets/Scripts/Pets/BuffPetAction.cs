@@ -15,7 +15,6 @@ public class BuffPetAction : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        gunBarrelEnd = player.transform.Find("GunBarrelEnd").gameObject;
     }
 
     // Update is called once per frame
@@ -26,7 +25,7 @@ public class BuffPetAction : MonoBehaviour
             if (!buffing)
             {
                 buffing = true;
-                gunBarrelEnd.GetComponent<PlayerShooting>().damagePerShot += buffAmount;
+                player.GetComponent<PetManager>().updateBuffDamage(buffAmount);
             }
         }
         else
@@ -34,8 +33,16 @@ public class BuffPetAction : MonoBehaviour
             if (buffing)
             {
                 buffing = false;
-                gunBarrelEnd.GetComponent<PlayerShooting>().damagePerShot -= buffAmount;
+                player.GetComponent<PetManager>().updateBuffDamage(-buffAmount);
             }
+        }
+    }
+
+    void OnDestroy()
+    {
+        if (buffing)
+        {
+            player.GetComponent<PetManager>().updateBuffDamage(-buffAmount);
         }
     }
 }
