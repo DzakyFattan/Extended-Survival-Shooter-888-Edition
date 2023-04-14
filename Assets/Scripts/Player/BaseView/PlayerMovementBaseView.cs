@@ -16,6 +16,9 @@ public class PlayerMovementBaseView : PlayerMovement
 
     // awake is called before start
     private void Awake(){
+        // Show Cursor
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         floorMask = LayerMask.GetMask("Floor");
         // TODO: refactor to use PlayerAnimationController
         anim = GetComponent<Animator>();

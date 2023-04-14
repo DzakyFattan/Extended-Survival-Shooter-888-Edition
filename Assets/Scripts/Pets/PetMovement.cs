@@ -9,7 +9,10 @@ public class PetMovement : MonoBehaviour
     NavMeshAgent nav;
     Vector3 targetPos;
     private Transform target;
+    private Transform realTarget;
     private GameObject player;
+    public bool chaserPet;
+    bool chaseMode = false;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +34,37 @@ public class PetMovement : MonoBehaviour
     void Update()
     {
         // Set desitnation to the right of the player facing
-        nav.SetDestination(target.transform.position);
+
+        if (!chaseMode)
+        {
+            // Set target to player
+            realTarget = target;
+        }
+        else
+        {
+            // Find the nearest enemy
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            float minDistance = 1000;
+            GameObject nearestEnemy = null;
+            foreach (GameObject enemy in enemies)
+            {
+                float distance = Vector3.Distance(transform.position, enemy.transform.position);
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                    nearestEnemy = enemy;
+                }
+            }
+            if (nearestEnemy != null)
+            {
+                realTarget = nearestEnemy.transform;
+            }
+            else
+            {
+                realTarget = target;
+            }
+        }
+        nav.SetDestination(realTarget.transform.position);
 
         bool moving = nav.velocity.magnitude > 0.5f;
         GetComponent<Animator>().SetBool("IsMoving", moving);
@@ -51,5 +84,13 @@ public class PetMovement : MonoBehaviour
         
         // Apply knockback force
         GetComponent<Rigidbody>().AddForce(direction * 700);
+    }
+
+    public void ChangeMode(bool _chaseMode)
+    {
+        if (chaserPet)
+        {
+            chaseMode = _chaseMode;
+        }
     }
 }
