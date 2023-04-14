@@ -16,6 +16,7 @@ public class EnemyMovement : MonoBehaviour
         targets = new List<GameObject>();
         targets.AddRange(GameObject.FindGameObjectsWithTag("Player"));
         targets.AddRange(GameObject.FindGameObjectsWithTag("Pet"));
+        targets.AddRange(GameObject.FindGameObjectsWithTag("Robot"));
 
         enemyHealth = GetComponent <EnemyHealth> ();
         nav = GetComponent <UnityEngine.AI.NavMeshAgent> ();
@@ -45,9 +46,29 @@ public class EnemyMovement : MonoBehaviour
                     target = t;
                 }
             }
+            else if (t.tag == "Robot") {
+                if (distance < minDistance && t.GetComponent<RobotHealth>().currentHealth > 0)
+                {
+                    minDistance = distance;
+                    target = t;
+                }
+            }
         }
 
-        var targetHealth = target.tag == "Pet" ? target.GetComponent<PetHealth>().currentHealth : target.GetComponent<PlayerHealth>().currentHealth;
+        // targetHealth is the health of the target
+        int targetHealth = 0;
+        if (target.tag == "Pet")
+        {
+            targetHealth = target.GetComponent<PetHealth>().currentHealth;
+        }
+        else if (target.tag == "Player")
+        {
+            targetHealth = target.GetComponent<PlayerHealth>().currentHealth;
+        }
+        else if (target.tag == "Robot")
+        {
+            targetHealth = target.GetComponent<RobotHealth>().currentHealth;
+        }
 
         if (enemyHealth.currentHealth > 0 && targetHealth > 0)
         {
