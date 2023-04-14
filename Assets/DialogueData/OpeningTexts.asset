@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9fc81ca3b9118de4c8b1825af7a11c4e, type: 3}
-  m_Name: Texts
+  m_Name: OpeningTexts
   m_EditorClassIdentifier: 
   sentences:
-  - 'Once upon a time... There was a sleepy boi.
+  - 'Once upon a time... There was a sleepy rat called Jim.
 
-    But boi had a nightmare'
-  - boi got trapped in dreamworld... and must save himself from oonga boonga.
-  - Help boi fight enemies, lesgooo!!!
+    But Jim had a nightmare'
+  - Jim got trapped in dreamworld... and must save himself from dream monsters.
+  - Jim must fight those enemies to get out, lesgooo!!!

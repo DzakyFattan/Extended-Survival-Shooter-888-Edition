@@ -945,6 +945,21 @@ MonoBehaviour:
   dialogueBox: {fileID: 268328978}
   textLabel: {fileID: 1414962751}
   dialogueObject: {fileID: 11400000, guid: eea6bd1a5c9b0a443815207f671442ea, type: 2}
+  onDialogueEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 171773208}
+        m_TargetAssemblyTypeName: DialogueUI, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: HomeWorld
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &188149198
 GameObject:
   m_ObjectHideFlags: 0
@@ -4757,6 +4772,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d8eeecdea7652c4798f9cad140d1600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newGameButton: {fileID: 0}
+  quitButton: {fileID: 0}
   volumeSlider: {fileID: 114423437}
 --- !u!114 &860820159
 MonoBehaviour:
