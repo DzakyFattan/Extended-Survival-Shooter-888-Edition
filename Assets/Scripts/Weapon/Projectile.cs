@@ -20,6 +20,8 @@ public class Projectile : MonoBehaviour
     
     Ray shootRay = new Ray();                                   
     RaycastHit shootHit;
+
+    private PetManager playerPetManager;
     
     bool enemyHit = false;
     void Awake(){
@@ -32,6 +34,7 @@ public class Projectile : MonoBehaviour
         gunLine = GetComponent<LineRenderer>();
 
         shootableMask = LayerMask.GetMask("Shootable");
+        playerPetManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PetManager>();
     }
     
     void OnEnable(){
@@ -55,8 +58,9 @@ public class Projectile : MonoBehaviour
 
             if (enemyHealth != null && enemyHit == false)
             {
+                int totalDamage = damage + playerPetManager.getBuffDamage();
                 print("enemy got hit!");
-                enemyHealth.TakeDamage(damage, shootHit.point);
+                enemyHealth.TakeDamage(totalDamage, shootHit.point);
                 enemyHit = true;
             }
             gunLine.SetPosition(1, shootHit.point);

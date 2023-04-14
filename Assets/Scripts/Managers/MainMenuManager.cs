@@ -6,39 +6,49 @@ using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
+    public Button newGameButton;
+    public Button quitButton;
     [SerializeField] Slider volumeSlider;
 
+    public delegate void ButtonClicked();
+    public static event ButtonClicked onExitButtonClicked;
     void Start()
     {
+        newGameButton.onClick.AddListener(LoadFirstQuest);
+        quitButton.onClick.AddListener(QuitGame);
         if (!PlayerPrefs.HasKey("musicVolume"))
         {
             PlayerPrefs.SetFloat("musicVolume", 1);
             LoadVolumeSetting();
-        } 
+        }
         else
         {
             LoadVolumeSetting();
         }
     }
 
-    public void LoadFirstQuest(){
+    public void LoadFirstQuest()
+    {
         // unload the current scene
         // SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        Debug.Log("Loading first quest");
         SceneManager.LoadScene("OpeningScene");
     }
 
-    public void LoadQuestMenu()
-    {
-        // unload the current scene
-        // SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
-        // load a scene called "QuestMenu"
-        SceneManager.LoadScene("QuestMenu");
-    }
+    // public void LoadQuestMenu()
+    // {
+    //     // unload the current scene
+    //     // SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+    //     // load a scene called "QuestMenu"
+    //     SceneManager.LoadScene("QuestMenu");
+    // }
 
     public void QuitGame()
     {
-        // quit the game
-        Application.Quit();
+        if (onExitButtonClicked != null)
+        {
+            onExitButtonClicked?.Invoke();
+        }
     }
 
     public void SetVolume()

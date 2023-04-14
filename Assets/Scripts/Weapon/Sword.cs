@@ -10,12 +10,14 @@ public class Sword : Weapon
     // get the player right hand
     public GameObject playerRightHand;
 
-    
+
     // set attack cooldown and damage
     public float attackCooldown = 1f;
     public int damage = 10;
 
     float timer = 0;
+
+    private PetManager playerPetManager;
     void Awake()
     {
         // set the sword to the right hand
@@ -24,6 +26,7 @@ public class Sword : Weapon
         // rotation 0, 0, 65
         transform.localPosition = new Vector3(0, 0.06f, 0);
         transform.localRotation = Quaternion.Euler(0, 0, 65);
+        playerPetManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PetManager>();
     }
 
     // Update is called once per frame
@@ -47,7 +50,8 @@ public class Sword : Weapon
             ResetAttack();
         }
     }
-    void Attack(){
+    void Attack()
+    {
         print("attack!");
         // set is attacking to true
         animController.SetIsAttacking(true);
@@ -57,20 +61,25 @@ public class Sword : Weapon
         timer = 0;
     }
 
-    void ResetAttack(){
+    void ResetAttack()
+    {
         animController.SetIsAttacking(false);
     }
 
     // TODO: handle collisions for damaging enemies
-    void OnTriggerEnter(Collider other){
+    void OnTriggerEnter(Collider other)
+    {
+
         // if layer === "Shootable"
-        if (other.gameObject.layer == 6){        
+        if (other.gameObject.layer == 6)
+        {
             // print("enemy hit!");
             EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
             if (enemyHealth != null)
             {
+                int totalDamage = damage + playerPetManager.getBuffDamage();
                 // print("enemy got hit!");
-                enemyHealth.TakeDamage(damage, other.transform.position);
+                enemyHealth.TakeDamage(totalDamage, other.transform.position);
             }
         }
     }

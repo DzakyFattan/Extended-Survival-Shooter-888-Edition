@@ -12,6 +12,9 @@ public class PetManager : MonoBehaviour
     GameObject[] petPrefabs;
 
     private GameObject[] activePets;
+
+    private bool chaseMode = false;
+    private int buffDamage = 0;
     // public event EventHandler killAllPets;
 
     // Start is called before the first frame update
@@ -24,21 +27,40 @@ public class PetManager : MonoBehaviour
     void Update()
     {
         // Spawn pet based on number pressed
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha7))
         {
+            if (!State.Instance.ownedPets.Contains(0))
+            {
+                print("You don't have this pet yet!");
+                return;
+            }
             SpawnPet(0);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha8))
         {
+            if (!State.Instance.ownedPets.Contains(1))
+            {
+                print("You don't have this pet yet!");
+                return;
+            }
             SpawnPet(1);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Alpha9))
         {
+            if (!State.Instance.ownedPets.Contains(2))
+            {
+                print("You don't have this pet yet!");
+                return;
+            }
             SpawnPet(2);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
+        if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             KillAllPets();
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            ChangeMode();
         }
     }
 
@@ -78,5 +100,28 @@ public class PetManager : MonoBehaviour
                 activePets[i].GetComponent<PetHealth>().Death();
             }
         }
+    }
+
+    public void ChangeMode()
+    {
+        chaseMode = !chaseMode;
+        for (int i = 0; i < petPositions.Length; i++)
+        {
+            if (activePets[i] != null)
+            {
+                // Check which prefab this pet is
+                activePets[i].GetComponent<PetMovement>().ChangeMode(chaseMode);
+            }
+        }
+    }
+
+    public int getBuffDamage()
+    {
+        return buffDamage;
+    }
+
+    public void updateBuffDamage(int amount)
+    {
+        buffDamage += amount;
     }
 }
