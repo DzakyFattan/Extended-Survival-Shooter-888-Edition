@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Singleton : MonoBehaviour
 {
-    public EventHandler eventHandler;
     private static GameObject Instance;
 
     private void Awake()
