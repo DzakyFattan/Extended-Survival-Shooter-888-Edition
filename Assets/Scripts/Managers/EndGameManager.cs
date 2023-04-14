@@ -15,6 +15,7 @@ public Text allText;
     {
         print("Score: " + scoreSO.Value);
         print("Time: " + timeSO.Value);
+        DataPersistenceManager.instance.SaveGame();
         allText.text = "Score: " + scoreSO.Value + " Time: " + timeSO.Value;
         // add will go back to home world scene
         allText.text += " Will go back to home world scene in 5 seconds";
