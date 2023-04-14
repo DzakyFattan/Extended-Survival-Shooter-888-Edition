@@ -49,7 +49,6 @@ public float speed = 5f;
     void EndGame(){
         print("end game");
         GameObject.Find("BossSceneManager").GetComponent<BossSceneManager>().EndGame();
-
     }
 
     // Update is called once per frame

@@ -21,14 +21,19 @@ public class GameOverManager : MonoBehaviour
     {
         if (playerHealth.currentHealth <= 0)
         {
-            anim.SetTrigger("GameOver");
+            SetGameOver();
+        }
+    }
 
-            restartTimer += Time.deltaTime;
+    public void SetGameOver()
+    {
+        anim.SetTrigger("GameOver");
 
-            if (restartTimer >= restartDelay)
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            }
+        restartTimer += Time.deltaTime;
+
+        if (restartTimer >= restartDelay)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

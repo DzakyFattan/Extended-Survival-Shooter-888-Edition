@@ -28,7 +28,7 @@ public class EnemyAttack : MonoBehaviour
 
     void OnTriggerEnter (Collider other)
     {
-        if (other.gameObject.tag == "Pet")
+        if (other.gameObject.tag == "Pet" || other.gameObject.tag == "Robot")
         {
             targets.Add(other.gameObject);
         }
@@ -41,7 +41,7 @@ public class EnemyAttack : MonoBehaviour
 
     void OnTriggerExit (Collider other)
     {
-        if (other.gameObject.tag == "Pet")
+        if (other.gameObject.tag == "Pet" || other.gameObject.tag == "Robot")
         {
             targets.Remove(other.gameObject);
         }
@@ -86,6 +86,13 @@ public class EnemyAttack : MonoBehaviour
 
     public void RemoveTarget(GameObject oldTarget)
     {
-        targets.Remove(oldTarget);
+        try
+        {
+            targets.Remove(oldTarget);
+        }
+        catch (System.Exception)
+        {
+        }
+        
     }
 }
