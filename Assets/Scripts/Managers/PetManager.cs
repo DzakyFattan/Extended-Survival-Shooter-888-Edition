@@ -29,14 +29,29 @@ public class PetManager : MonoBehaviour
         // Spawn pet based on number pressed
         if (Input.GetKeyDown(KeyCode.Alpha7))
         {
+            if (!State.Instance.ownedPets.Contains(0))
+            {
+                print("You don't have this pet yet!");
+                return;
+            }
             SpawnPet(0);
         }
         if (Input.GetKeyDown(KeyCode.Alpha8))
         {
+            if (!State.Instance.ownedPets.Contains(1))
+            {
+                print("You don't have this pet yet!");
+                return;
+            }
             SpawnPet(1);
         }
         if (Input.GetKeyDown(KeyCode.Alpha9))
         {
+            if (!State.Instance.ownedPets.Contains(2))
+            {
+                print("You don't have this pet yet!");
+                return;
+            }
             SpawnPet(2);
         }
         if (Input.GetKeyDown(KeyCode.Alpha0))
