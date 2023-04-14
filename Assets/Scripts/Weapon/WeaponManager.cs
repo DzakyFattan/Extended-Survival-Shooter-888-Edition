@@ -50,18 +50,33 @@ public class WeaponManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             print("2");
+            if (State.Instance.boughtShotgun == false)
+            {
+                print("You don't have this weapon yet!");
+                return;
+            }
             SwitchWeapon(2);
             animController.SetWeaponType(2);
 
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
+            if (State.Instance.boughtSword == false)
+            {
+                print("You don't have this weapon yet!");
+                return;
+            }
             print("3");
             SwitchWeapon(3);
             animController.SetWeaponType(3);
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
+            if (State.Instance.boughtBow == false)
+            {
+                print("You don't have this weapon yet!");
+                return;
+            }
             print("4");
             SwitchWeapon(4);
             animController.SetWeaponType(4);
