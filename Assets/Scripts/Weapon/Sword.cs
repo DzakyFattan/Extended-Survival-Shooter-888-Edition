@@ -10,7 +10,7 @@ public class Sword : Weapon
     // get the player right hand
     public GameObject playerRightHand;
 
-    
+
     // set attack cooldown and damage
     public float attackCooldown = 1f;
     public int damage = 10;
@@ -50,7 +50,8 @@ public class Sword : Weapon
             ResetAttack();
         }
     }
-    void Attack(){
+    void Attack()
+    {
         print("attack!");
         // set is attacking to true
         animController.SetIsAttacking(true);
@@ -60,15 +61,18 @@ public class Sword : Weapon
         timer = 0;
     }
 
-    void ResetAttack(){
+    void ResetAttack()
+    {
         animController.SetIsAttacking(false);
     }
 
     // TODO: handle collisions for damaging enemies
-    void OnTriggerEnter(Collider other){
+    void OnTriggerEnter(Collider other)
+    {
 
         // if layer === "Shootable"
-        if (other.gameObject.layer == 6){        
+        if (other.gameObject.layer == 6)
+        {
             // print("enemy hit!");
             EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
             if (enemyHealth != null)

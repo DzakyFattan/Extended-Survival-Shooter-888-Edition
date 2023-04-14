@@ -9,9 +9,6 @@ public class ScoreboardManager : MonoBehaviour
 {
     // private static GameObject Instance;
     private ScoreData scoreData;
-    public Button backButton;
-    public delegate void ButtonClicked();
-    public static event ButtonClicked onBackButtonClicked;
 
     void Awake()
     {
@@ -22,8 +19,6 @@ public class ScoreboardManager : MonoBehaviour
     void Start()
     {
         Debug.Log("ScoreBoardManager");
-        Debug.Log(backButton);
-        backButton.onClick.AddListener(BackToMainMenu);
     }
     public IEnumerable<Score> GetScores()
     {
@@ -33,14 +28,6 @@ public class ScoreboardManager : MonoBehaviour
     public void AddScore(Score score)
     {
         scoreData.scores.Add(score);
-    }
-
-    public void BackToMainMenu()
-    {
-        if (onBackButtonClicked != null)
-        {
-            onBackButtonClicked?.Invoke();
-        }
     }
 
     private void OnDestroy()
