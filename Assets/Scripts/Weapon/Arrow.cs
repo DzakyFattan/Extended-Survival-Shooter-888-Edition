@@ -10,9 +10,11 @@ public class Arrow : MonoBehaviour
     // Start is called before the first frame update
 
     float lifespan = 0f;
+
+    private PetManager playerPetManager;
     void Start()
     {
-        
+        playerPetManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PetManager>();
     }
 
     // Update is called once per frame
@@ -23,11 +25,12 @@ public class Arrow : MonoBehaviour
         if (lifespan >= maximumLifespan){
             Destroy(gameObject);
         }
-
-        
     }
     // get collider. if hit enemy, do damage
     void OnTriggerEnter(Collider other){
+
+        int totalDamage = damage + playerPetManager.getBuffDamage();
+
         // if layer === "Shootable"
         if (other.gameObject.layer == 6){        
             print("enemy hit!");
@@ -35,7 +38,7 @@ public class Arrow : MonoBehaviour
             if (enemyHealth != null)
             {
                 print("enemy got hit!");
-                enemyHealth.TakeDamage(damage, other.transform.position);
+                enemyHealth.TakeDamage(totalDamage, other.transform.position);
                 Destroy(gameObject);
             }
         }
