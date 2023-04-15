@@ -7,6 +7,8 @@ public class Shop : MonoBehaviour
 
     public GameObject shopHUD;
     public GameObject ShopCanvas;
+    public GameObject SaveCanvas;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,8 +27,14 @@ public class Shop : MonoBehaviour
             ShopCanvas.SetActive(true);
             // disable mouse lock
             Cursor.lockState = CursorLockMode.None;
-            
-            
+        }
+        // if L is pressed and trigger is true, save game
+        else if (Input.GetKeyDown(KeyCode.L) && shopHUD.activeSelf)
+        {
+            // go to shop
+            Debug.Log("Save Game");
+            SaveCanvas.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
         }
     }
     // on cube colider, enable HUD which tell the player to press enter to go to shop
