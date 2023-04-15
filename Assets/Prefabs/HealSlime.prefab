@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f0b7577dcfbef14a84df767c564c509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chaserPet: 0
 --- !u!195 &5845464212613403778
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -238,6 +239,7 @@ MonoBehaviour:
   startingHealth: 50
   currentHealth: 0
   deathClip: {fileID: 8300000, guid: 11362f45c064a90459868622a354a5a8, type: 3}
+  petIdx: 1
 --- !u!82 &-6874432086546152339
 AudioSource:
   m_ObjectHideFlags: 0

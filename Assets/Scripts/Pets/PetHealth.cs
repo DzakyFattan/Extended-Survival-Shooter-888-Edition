@@ -13,6 +13,8 @@ public class PetHealth : MonoBehaviour, IHealth
     Animator anim;
     private AudioSource petAudio;
 
+    public int petIdx;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +61,8 @@ public class PetHealth : MonoBehaviour, IHealth
             enemy.GetComponent<EnemyMovement>().RemoveTarget(gameObject);
             enemy.GetComponent<EnemyAttack>().RemoveTarget(gameObject);
         }
+
+        State.Instance.ownedPets.Remove(petIdx);
 
 
         Destroy(gameObject);
