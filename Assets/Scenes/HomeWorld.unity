@@ -3580,7 +3580,7 @@ MonoBehaviour:
   currency: 0
   playerName: Player X
   completedQuests: 
-  ownedPets: 
+  ownedPets: 0100000002000000
   time: 0
   boughtSword: 0
   boughtShotgun: 0
