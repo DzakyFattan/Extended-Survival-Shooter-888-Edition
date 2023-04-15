@@ -22,7 +22,7 @@ public class BossSceneManager : MonoBehaviour
         endTime = Time.time;
         timeSO.Value += endTime - startTime;
         // print("Time: " + (endTime - startTime).ToString());
-        Score score = new Score("Player1", 1, 1);
+        Score score = new Score(State.Instance.playerName, State.Instance.score, State.Instance.time);
         scoreboardManager.AddScore(score);
         SceneManager.LoadScene("EndingScene");
     }

@@ -9,6 +9,7 @@ public class State : MonoBehaviour
 
     public int score = 0;
     public int currency = 0;
+    public string playerName = "Player X";
     public List<int> completedQuests = new List<int>();
     public List<int> ownedPets = new List<int>();
     public float time = 0;
