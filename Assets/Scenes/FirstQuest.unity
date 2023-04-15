@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028328, g: 0.22571328, b: 0.3069218, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1473,6 +1473,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   currency: 0
+  playerName: Player X
+  completedQuests: 
   ownedPets: 
   time: 0
   boughtSword: 0
@@ -2353,6 +2355,64 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 149d6dcc67e8d1240bbc0dd6ddf0c1bd, type: 3}
+--- !u!1 &1998435593
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1998435595}
+  - component: {fileID: 1998435594}
+  m_Layer: 0
+  m_Name: CheatManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1998435594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998435593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534ed42331a3f424e8550aa9e5addb39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cheatNoDamage: bagucvix
+  cheatOneHit: fullclip
+  cheatMotherlode: hesoyam
+  cheatTwoSpeed: iamspeed
+  cheatPetFull: petfull
+  cheatKillPet: genocide
+  cheatReset: reset
+  enteringCheat: 0
+  isCheatEnabled: 0
+  playerHealth: {fileID: 993564151}
+  isOneHitEnabled: 0
+  isFullHPPetEnabled: 0
+  isKillAllPetsEnabled: 0
+  playerMovement: {fileID: 2059217303}
+--- !u!4 &1998435595
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998435593}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2059217295 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5219781341203029333, guid: 5432b88fb4e5890ad98d0b82895597b7, type: 3}
@@ -2454,6 +2514,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2059217303 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8043385700625246904, guid: 5432b88fb4e5890ad98d0b82895597b7, type: 3}
+  m_PrefabInstance: {fileID: 993564148}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059217295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53219ff34fe40604ca7dcff840603b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2075013320
 GameObject:
   m_ObjectHideFlags: 0

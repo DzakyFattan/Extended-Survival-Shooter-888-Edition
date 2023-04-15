@@ -12,12 +12,14 @@ public class PlayerHealth : MonoBehaviour, IHealth
     public float flashSpeed = 5f;
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
 
+    public bool isNoDamageEnabled = false;
+
     // TODO: refactor to use PlayerAnimationController  
     Animator anim;
     AudioSource playerAudio;
     PlayerMovement playerMovement;
-    bool isDead;                                                
-    bool damaged;                                               
+    bool isDead;
+    bool damaged;
 
 
     void Awake()
@@ -52,20 +54,22 @@ public class PlayerHealth : MonoBehaviour, IHealth
 
     public void TakeDamage(int amount)
     {
-        // if slider is not null
-        if (healthSlider != null)
+        if (!isNoDamageEnabled)
+        {
+            if (healthSlider != null)
             {
-            damaged = true;
+                damaged = true;
 
-            currentHealth -= amount;
+                currentHealth -= amount;
 
-            healthSlider.value = currentHealth;
+                healthSlider.value = currentHealth;
 
-            playerAudio.Play();
+                playerAudio.Play();
 
-            if (currentHealth <= 0 && !isDead)
-            {
-                Death();
+                if (currentHealth <= 0 && !isDead)
+                {
+                    Death();
+                }
             }
         }
     }
@@ -100,4 +104,9 @@ public class PlayerHealth : MonoBehaviour, IHealth
     // {
     //     SceneManager.LoadScene(0);
     // }
+
+    public void SetNoDamage(bool value)
+    {
+        isNoDamageEnabled = value;
+    }
 }

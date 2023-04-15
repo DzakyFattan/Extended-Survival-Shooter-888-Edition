@@ -2997,6 +2997,64 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2752055ee89f85b0fbd6ff9de1f8f3a0, type: 3}
   m_PrefabInstance: {fileID: 1220306182}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1925414242
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1925414244}
+  - component: {fileID: 1925414243}
+  m_Layer: 0
+  m_Name: CheatManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1925414243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925414242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534ed42331a3f424e8550aa9e5addb39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cheatNoDamage: bagucvix
+  cheatOneHit: fullclip
+  cheatMotherlode: hesoyam
+  cheatTwoSpeed: iamspeed
+  cheatPetFull: petfull
+  cheatKillPet: genocide
+  cheatReset: reset
+  enteringCheat: 0
+  isCheatEnabled: 0
+  playerHealth: {fileID: 6039981}
+  isOneHitEnabled: 0
+  isFullHPPetEnabled: 0
+  isKillAllPetsEnabled: 0
+  playerMovement: {fileID: 2111739852}
+--- !u!4 &1925414244
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925414242}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1954219161
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -17,10 +17,14 @@ public class PetManager : MonoBehaviour
     private int buffDamage = 0;
     // public event EventHandler killAllPets;
 
+    private CheatManager cheatManager;
+
     // Start is called before the first frame update
     void Start()
     {
         activePets = new GameObject[petPositions.Length];
+        cheatManager = GameObject.Find("CheatManager").GetComponent<CheatManager>();
+        Debug.Log(cheatManager);
     }
 
     // Update is called once per frame
@@ -61,6 +65,11 @@ public class PetManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             ChangeMode();
+        }
+        if (cheatManager.isKillAllPetsEnabled)
+        {
+            KillAllPets();
+            cheatManager.isKillAllPetsEnabled = false;
         }
     }
 

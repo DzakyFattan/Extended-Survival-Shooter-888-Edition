@@ -12,8 +12,9 @@ public class PetHealth : MonoBehaviour, IHealth
     bool isDead = false;
     Animator anim;
     private AudioSource petAudio;
-
     public int petIdx;
+
+    private CheatManager cheatManager;
 
     // Start is called before the first frame update
     void Start()
@@ -22,26 +23,30 @@ public class PetHealth : MonoBehaviour, IHealth
         petMovement = GetComponent<PetMovement>();
         currentHealth = startingHealth;
         petAudio = GetComponent<AudioSource>();
+        cheatManager = GameObject.Find("CheatManager").GetComponent<CheatManager>();
 
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemies)
         {
             enemy.GetComponent<EnemyMovement>().AddTarget(gameObject);
         }
-        
+
     }
 
     public void TakeDamage(int amount)
     {
-        currentHealth -= amount;
-        // Apply knockback
-        petMovement.Knockback();
-        // Play hurt sound
-        petAudio.Play();
-
-        if (currentHealth <= 0 && !isDead)
+        if (!cheatManager.isFullHPPetEnabled)
         {
-            Death();
+            currentHealth -= amount;
+            // Apply knockback
+            petMovement.Knockback();
+            // Play hurt sound
+            petAudio.Play();
+
+            if (currentHealth <= 0 && !isDead)
+            {
+                Death();
+            }
         }
     }
 

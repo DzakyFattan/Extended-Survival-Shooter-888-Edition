@@ -3279,6 +3279,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4582054110622402504, guid: 5432b88fb4e5890ad98d0b82895597b7, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4844663555824158703, guid: 5432b88fb4e5890ad98d0b82895597b7, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -3903,6 +3907,64 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1546895503}
   m_Mesh: {fileID: 4300000, guid: cd89b29b93f735d4890454fe39739868, type: 3}
+--- !u!1 &1643710811
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1643710813}
+  - component: {fileID: 1643710812}
+  m_Layer: 0
+  m_Name: CheatManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1643710812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643710811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534ed42331a3f424e8550aa9e5addb39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cheatNoDamage: bagucvix
+  cheatOneHit: fullclip
+  cheatMotherlode: hesoyam
+  cheatTwoSpeed: iamspeed
+  cheatPetFull: petfull
+  cheatKillPet: genocide
+  cheatReset: reset
+  enteringCheat: 0
+  isCheatEnabled: 0
+  playerHealth: {fileID: 2044372286}
+  isOneHitEnabled: 0
+  isFullHPPetEnabled: 0
+  isKillAllPetsEnabled: 0
+  playerMovement: {fileID: 2044372284}
+--- !u!4 &1643710813
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643710811}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1689431926
 GameObject:
   m_ObjectHideFlags: 0

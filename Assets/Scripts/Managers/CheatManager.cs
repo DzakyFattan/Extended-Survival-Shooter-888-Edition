@@ -10,116 +10,106 @@ public class CheatManager : MonoBehaviour
     public string cheatTwoSpeed;
     public string cheatPetFull;
     public string cheatKillPet;
-    public int index;
+    public string cheatReset;
+
+    public bool enteringCheat = false;
+    public bool isCheatEnabled = false;
+    private string EnteredString = "";
+    public PlayerHealth playerHealth;
+    public bool isOneHitEnabled = false;
+    public bool isFullHPPetEnabled = false;
+
+    public bool isKillAllPetsEnabled = false;
+    public PlayerMovement playerMovement;
+
+    private List<string> cheatList = new List<string>();
 
     // Start is called before the first frame update
     void Start()
     {
-        cheatNoDamage = "bagucvix";
-        cheatOneHit = "fullclip";
-        cheatMotherlode = "hesoyam";
-        cheatTwoSpeed = "iamspeed";
-        cheatPetFull = "petfull";
-        cheatKillPet = "genocide";
-        index = 0;
+        cheatList.Add(cheatNoDamage);
+        cheatList.Add(cheatOneHit);
+        cheatList.Add(cheatMotherlode);
+        cheatList.Add(cheatTwoSpeed);
+        cheatList.Add(cheatPetFull);
+        cheatList.Add(cheatKillPet);
+        cheatList.Add(cheatReset);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Slash))
+        if (Input.GetKeyDown(KeyCode.Slash) && !enteringCheat)
         {
-            if (Input.anyKeyDown)
+            enteringCheat = true;
+
+        }
+        else if (Input.GetKeyDown(KeyCode.Return))
+        {
+            enteringCheat = false;
+            Debug.Log("Entered String: " + EnteredString);
+            if (cheatList.Contains(EnteredString))
             {
-                if (Input.GetKeyDown(cheatNoDamage[index].ToString()))
+                startCheat();
+                isCheatEnabled = true;
+            }
+            else
+            {
+                Debug.Log("Cheat Not Found");
+            }
+            EnteredString = "";
+        }
+        else
+        {
+            if (enteringCheat)
+            {
+                if (Input.anyKeyDown)
                 {
-                    index++;
-                    if (index == cheatNoDamage.Length)
-                    {
-                        index = 0;
-                        Debug.Log("No Damage");
-                        // TODO: Add code to disable damage
-                    }
-                    else
-                    {
-                        index = 0;
-                    }
-                }
-                else if (Input.GetKeyDown(cheatOneHit[index].ToString()))
-                {
-                    index++;
-                    if (index == cheatOneHit.Length)
-                    {
-                        index = 0;
-                        Debug.Log("One Hit");
-                        // TODO
-                    }
-                    else
-                    {
-                        index = 0;
-                    }
-                }
-                else if (Input.GetKeyDown(cheatMotherlode[index].ToString()))
-                {
-                    index++;
-                    if (index == cheatMotherlode.Length)
-                    {
-                        index = 0;
-                        Debug.Log("Motherlode");
-                        // TODO
-                    }
-                    else
-                    {
-                        index = 0;
-                    }
-                }
-                else if (Input.GetKeyDown(cheatTwoSpeed[index].ToString()))
-                {
-                    index++;
-                    if (index == cheatTwoSpeed.Length)
-                    {
-                        index = 0;
-                        Debug.Log("Two Speed");
-                        // TODO
-                    }
-                    else
-                    {
-                        index = 0;
-                    }
-                }
-                else if (Input.GetKeyDown(cheatPetFull[index].ToString()))
-                {
-                    index++;
-                    if (index == cheatPetFull.Length)
-                    {
-                        index = 0;
-                        Debug.Log("Pet Full");
-                        // TODO
-                    }
-                    else
-                    {
-                        index = 0;
-                    }
-                }
-                else if (Input.GetKeyDown(cheatKillPet[index].ToString()))
-                {
-                    index++;
-                    if (index == cheatKillPet.Length)
-                    {
-                        index = 0;
-                        Debug.Log("Kill Pet");
-                        // TODO
-                    }
-                    else
-                    {
-                        index = 0;
-                    }
-                }
-                else
-                {
-                    index = 0;
+                    EnteredString += Input.inputString;
                 }
             }
+        }
+    }
+
+    private void startCheat()
+    {
+        if (EnteredString == cheatNoDamage)
+        {
+            playerHealth.isNoDamageEnabled = true;
+        }
+        else if (EnteredString == cheatOneHit)
+        {
+            isOneHitEnabled = true;
+        }
+        else if (EnteredString == cheatMotherlode)
+        {
+            Debug.Log(State.Instance.currency);
+            State.Instance.currency += 2147483640;
+            Debug.Log(State.Instance.currency);
+        }
+        else if (EnteredString == cheatTwoSpeed)
+        {
+            Debug.Log(playerMovement.speed);
+            playerMovement.speed *= 2;
+            Debug.Log(playerMovement.speed);
+        }
+        else if (EnteredString == cheatPetFull)
+        {
+            isFullHPPetEnabled = true;
+        }
+        else if (EnteredString == cheatKillPet)
+        {
+            isKillAllPetsEnabled = true;
+        }
+        else if (EnteredString == cheatReset && isCheatEnabled)
+        {
+            playerHealth.isNoDamageEnabled = false;
+            isOneHitEnabled = false;
+            State.Instance.currency -= 2147483640;
+            playerMovement.speed = 6;
+            isFullHPPetEnabled = false;
+            isKillAllPetsEnabled = false;
+            isCheatEnabled = false;
         }
     }
 }
