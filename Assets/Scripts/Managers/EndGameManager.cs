@@ -10,19 +10,16 @@ public class EndGameManager : MonoBehaviour
     public FloatSO scoreSO;
     public FloatSO timeSO;
     public Text allText;
-    public ScoreboardManager scoreboardManager;
 
     void Start()
     {
-        print("end game manager from end quest scene ");
-        print("Score: " + scoreSO.Value);
-        print("Time: " + timeSO.Value);
+        // print("end game manager from end quest scene ");
+        // print("Score: " + scoreSO.Value);
+        // print("Time: " + timeSO.Value);
 
 
         
         allText.text = "Score: " + scoreSO.Value + " Time: " + timeSO.Value;
-        // update with scoreboardManager
-        scoreboardManager.AddScore(new Score("Player 1", scoreSO.Value, timeSO.Value));
         // add will go back to home world scene
         allText.text += " Will go back to home world scene in 5 seconds";
         SetToState();
@@ -34,7 +31,7 @@ public class EndGameManager : MonoBehaviour
         timeLeft -= Time.deltaTime;
         if (timeLeft < 0)
         {
-            print("Time: " + timeLeft);
+            // print("Time: " + timeLeft);
             // TODO: save game
             SceneManager.LoadScene("HomeWorld");
         }

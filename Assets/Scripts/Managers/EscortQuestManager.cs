@@ -25,8 +25,9 @@ public class EscortQuestManager : MonoBehaviour
     public void EndGame(){
         endTime = Time.time;
         timeSO.Value += endTime - startTime;
-        print("Time: " + (endTime - startTime).ToString());
+        // print("Time: " + (endTime - startTime).ToString());
+        State.Instance.completedQuests.Add(3);
         // TODO: change scene to EndQuestScene
-        SceneManager.LoadSceneAsync("EndQuestScene");
+        SceneManager.LoadScene("EndQuestScene");
     }
 }

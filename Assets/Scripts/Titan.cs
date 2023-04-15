@@ -33,6 +33,8 @@ public class Titan : MonoBehaviour
     // speed
     public float speed = 5f;
 
+    private bool isInvoked = false;
+
 
     void Awake()
     {
@@ -65,7 +67,11 @@ public class Titan : MonoBehaviour
         healthSlider.value = (int)Math.Round((float)(healthFloat / startingHealthFloat) * 100);
         if (health <= 0)
         {
-            Invoke("EndGame", 10f);
+            if (!isInvoked)
+            {
+                Invoke("EndGame", 10f);
+                isInvoked = true;
+            }
             return;
         }
 

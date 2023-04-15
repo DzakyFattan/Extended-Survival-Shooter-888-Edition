@@ -24,7 +24,8 @@ public class MazeQuestManager : MonoBehaviour
         print("this is maze quest manager from maze quest scene");
         endTime = Time.time;
         timeSO.Value = endTime - startTime;
-        SceneManager.LoadSceneAsync("EndQuestScene");
+         State.Instance.completedQuests.Add(2);
+        SceneManager.LoadScene("EndQuestScene");
     }
     public void IncrementScore(){
         scoreSO.Value += 100;

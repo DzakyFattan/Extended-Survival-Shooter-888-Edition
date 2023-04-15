@@ -9,9 +9,11 @@ public class State : MonoBehaviour
 
     public int score = 0;
     public int currency = 0;
-    public HashSet<int> completedQuests = new HashSet<int>();
+    public List<int> completedQuests = new List<int>();
     public List<int> ownedPets = new List<int>();
     public float time = 0;
+    
+    public ScoreData scoreData = new ScoreData();
 
 
 

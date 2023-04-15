@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17992344, g: 0.22527672, b: 0.30669117, a: 1}
+  m_IndirectSpecularColor: {r: 0.17992312, g: 0.22527617, b: 0.30668998, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -849,7 +849,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &95874392
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3913,10 +3913,10 @@ RectTransform:
   m_Father: {fileID: 509800824}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 28}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 239.59875, y: -14}
+  m_SizeDelta: {x: 158.78584, y: 28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &592701045
 MonoBehaviour:
@@ -4774,10 +4774,10 @@ RectTransform:
   m_Father: {fileID: 509800824}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 28}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 80.10292, y: -14}
+  m_SizeDelta: {x: 160.20584, y: 28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &778166227
 MonoBehaviour:
@@ -5822,7 +5822,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
+  currency: 0
   ownedPets: 
+  time: 0
   boughtSword: 0
   boughtShotgun: 0
   boughtBow: 0
@@ -6386,6 +6388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopHUD: {fileID: 0}
+  ShopCanvas: {fileID: 0}
 --- !u!65 &1054528398
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7675,7 +7678,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1210718428
 RectTransform:
   m_ObjectHideFlags: 0
