@@ -4,7 +4,6 @@ using System.Collections;
 
 public class ScoreManager : MonoBehaviour
 {
-    public static int score;
 
     public FloatSO scoreSO;
 
@@ -14,15 +13,13 @@ public class ScoreManager : MonoBehaviour
     void Awake ()
     {
         text = GetComponent <Text> ();
-        score = 0;
     }
 
 
     void Update ()
     {
-        text.text = "Score: " + score;
+        text.text = "Score: " + scoreSO.Value;
         // TODO: update scoreSO
-        scoreSO.Value = score;
         // TODO: for quest 1 if score is 100, load EndQuestScene
     }
 }

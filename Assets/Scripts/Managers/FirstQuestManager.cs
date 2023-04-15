@@ -28,10 +28,8 @@ public class FirstQuestManager : MonoBehaviour
     void EndGame(){
         endTime = Time.time;
         timeSO.Value += endTime - startTime;
-        // scoreSO.Value = scoreSO.Value + timeSO.Value;
-        // print("Score: " + scoreSO.Value);
         print("Time: " + (endTime - startTime).ToString());
         // TODO: change scene to EndQuestScene
-        SceneManager.LoadSceneAsync("EndQuestScene");
+        SceneManager.LoadScene("EndQuestScene");
     }
 }
