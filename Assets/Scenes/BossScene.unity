@@ -2850,6 +2850,7 @@ MonoBehaviour:
   sinkSpeed: 2.5
   scoreValue: 10
   deathClip: {fileID: 8300000, guid: 50dee191f1af3994c99e69c8c4e2c104, type: 3}
+  scoreSO: {fileID: 11400000, guid: 8e6cbf4f3d62bdb9291c789be709ae31, type: 2}
 --- !u!82 &1908271878
 AudioSource:
   m_ObjectHideFlags: 0

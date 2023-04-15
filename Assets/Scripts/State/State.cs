@@ -8,8 +8,11 @@ public class State : MonoBehaviour, IDataPersistence
     // Declare all state variables here
     public string playerName = "Player1";
     public float score = 0;
+    public int currency;
     public List<int> completedQuests = new List<int>();
     public List<int> ownedPets = new List<int>();
+    public float time = 0;
+
     public bool boughtSword = false;
     public bool boughtShotgun = false;
     public bool boughtBow = false;
@@ -31,6 +34,7 @@ public class State : MonoBehaviour, IDataPersistence
         // load data from gameData into this script
         this.playerName = data.playerName;
         this.score = data.score;
+        this.currency = data.currency;
         this.completedQuests = data.completedQuests;
         this.ownedPets = data.ownedPets;
         this.boughtSword = data.boughtSword;
@@ -43,6 +47,7 @@ public class State : MonoBehaviour, IDataPersistence
         // save data from this script into gameData
         data.playerName = this.playerName;
         data.score = this.score;
+        data.currency = this.currency;
         data.completedQuests = this.completedQuests;
         data.ownedPets = this.ownedPets;
         data.boughtSword = this.boughtSword;

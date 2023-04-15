@@ -148,3 +148,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyLeft: {fileID: 0}
+  scoreSO: {fileID: 11400000, guid: 8e6cbf4f3d62bdb9291c789be709ae31, type: 2}

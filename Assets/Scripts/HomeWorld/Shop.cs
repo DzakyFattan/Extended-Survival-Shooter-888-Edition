@@ -6,6 +6,7 @@ public class Shop : MonoBehaviour
 {
 
     public GameObject shopHUD;
+    public GameObject ShopCanvas;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,12 @@ public class Shop : MonoBehaviour
         {
             // go to shop
             Debug.Log("Going to shop");
+            // enable ShopCanvas
+            ShopCanvas.SetActive(true);
+            // disable mouse lock
+            Cursor.lockState = CursorLockMode.None;
+            
+            
         }
         // if L is pressed and trigger is true, save game
         else if (Input.GetKeyDown(KeyCode.L) && shopHUD.activeSelf)
