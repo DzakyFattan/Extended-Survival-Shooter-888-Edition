@@ -10,15 +10,14 @@ public class ScoreUI : MonoBehaviour
     public ScoreboardManager scoreManager;
     void Start()
     {
-        scoreManager.AddScore(new Score("Player 1", 100));
+        scoreManager.AddScore(new Score("Player", 100, 10));
         var scores = scoreManager.GetScores().ToArray();
         for (int i = 0; i < scores.Length; i++)
         {
             var score = scores[i];
             var row = Instantiate(rowUI, transform).GetComponent<RowUI>();
-            row.rankText.text = (i + 1).ToString();
             row.nameText.text = score.name;
-            row.scoreText.text = score.score.ToString();
+            row.timeText.text = score.time.ToString();
         }
     }
 }
