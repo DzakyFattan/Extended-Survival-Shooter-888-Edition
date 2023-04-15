@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class GameSlotManager : MonoBehaviour
+public class SaveSlotManager : MonoBehaviour
 {
     private GameSlot[] gameSlots;
+    public GameObject saveCanvas;
 
     private void Awake()
     {
@@ -14,14 +14,27 @@ public class GameSlotManager : MonoBehaviour
 
     public void OnGameSlotClicked(GameSlot gameSlot)
     {
+        Debug.Log("SaveSlotManager.OnGameSlotClicked() called");
         DataPersistenceManager.instance.ChangeSelectedProfileId(gameSlot.GetProfileId());
-        DataPersistenceManager.instance.LoadGame();
-        SceneManager.LoadScene("HomeWorld");
+        DataPersistenceManager.instance.SaveGame();
+        saveCanvas.SetActive(false);
+        // enable mouse lock
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Start()
     {
         ActivateMenu();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            saveCanvas.SetActive(false);
+            // enable mouse lock
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 
     public void ActivateMenu()
@@ -32,16 +45,6 @@ public class GameSlotManager : MonoBehaviour
             GameData profileData = null;
             profilesGameData.TryGetValue(gameSlot.GetProfileId(), out profileData);
             gameSlot.SetData(profileData);
-            if (profileData == null)
-            {
-                // set gameslot's button component interactable to false
-                gameSlot.SetInteractable(false);
-            }
-            else
-            {
-                // set gameslot's button component interactable to true
-                gameSlot.SetInteractable(true);
-            }
         }
     }
 }

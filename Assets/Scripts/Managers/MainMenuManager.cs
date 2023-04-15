@@ -19,6 +19,7 @@ public class MainMenuManager : MonoBehaviour
         newGameButton.onClick.AddListener(LoadFirstQuest);
         saveSlot1Button.onClick.AddListener(LoadSavedGame);
         quitButton.onClick.AddListener(QuitGame);
+        volumeSlider.onValueChanged.AddListener( delegate { SetVolume(); } );
         playerNameInputField.onValueChanged.AddListener(OnInputFieldChanged);
         if (!PlayerPrefs.HasKey("musicVolume"))
         {

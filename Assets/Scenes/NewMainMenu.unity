@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17992344, g: 0.22527672, b: 0.30669117, a: 1}
+  m_IndirectSpecularColor: {r: 0.18066499, g: 0.22616929, b: 0.30712888, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -849,7 +849,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &95874392
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3947,10 +3947,10 @@ RectTransform:
   m_Father: {fileID: 509800824}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 28}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 239.59875, y: -14}
+  m_SizeDelta: {x: 158.78584, y: 28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &592701045
 MonoBehaviour:
@@ -4808,10 +4808,10 @@ RectTransform:
   m_Father: {fileID: 509800824}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 28}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 80.10292, y: -14}
+  m_SizeDelta: {x: 160.20584, y: 28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &778166227
 MonoBehaviour:
@@ -5675,8 +5675,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: Player1
   score: 0
+  currency: 0
   completedQuests: 
   ownedPets: 
+  time: 0
   boughtSword: 0
   boughtShotgun: 0
   boughtBow: 0
@@ -6088,6 +6090,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8516605282333606495, guid: 8ff499320e390f4418d6e1feccd3302e, type: 3}
   m_PrefabInstance: {fileID: 1819981509}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1025531629 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1606493293557272187, guid: 8ff499320e390f4418d6e1feccd3302e, type: 3}
+  m_PrefabInstance: {fileID: 1819981509}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7b5cc0547dbe7b48a2a766b7296fc06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1054528396
 GameObject:
   m_ObjectHideFlags: 0
@@ -6122,6 +6135,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopHUD: {fileID: 0}
+  ShopCanvas: {fileID: 0}
+  SaveCanvas: {fileID: 0}
 --- !u!65 &1054528398
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7473,7 +7488,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1210718428
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7624,6 +7639,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6ec141e423c0ef46a377ffd284c2e2a, type: 3}
+--- !u!114 &1252225912 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1606493293557272187, guid: 8ff499320e390f4418d6e1feccd3302e, type: 3}
+  m_PrefabInstance: {fileID: 8516605282014503345}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7b5cc0547dbe7b48a2a766b7296fc06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1258726476
 GameObject:
   m_ObjectHideFlags: 0
@@ -9158,19 +9184,7 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
-        m_MethodName: SetVolume
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1566854552
 GameObject:
   m_ObjectHideFlags: 0
@@ -9313,6 +9327,30 @@ PrefabInstance:
     - target: {fileID: 8516605282333606492, guid: 8ff499320e390f4418d6e1feccd3302e, type: 3}
       propertyPath: m_Name
       value: GameSlot (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516605282333606494, guid: 8ff499320e390f4418d6e1feccd3302e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516605282333606494, guid: 8ff499320e390f4418d6e1feccd3302e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1267479943}
+    - target: {fileID: 8516605282333606494, guid: 8ff499320e390f4418d6e1feccd3302e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnGameSlotClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516605282333606494, guid: 8ff499320e390f4418d6e1feccd3302e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameSlotManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516605282333606494, guid: 8ff499320e390f4418d6e1feccd3302e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1817692713}
+    - target: {fileID: 8516605282333606494, guid: 8ff499320e390f4418d6e1feccd3302e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: GameSlot, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8516605282333606495, guid: 8ff499320e390f4418d6e1feccd3302e, type: 3}
       propertyPath: m_Pivot.x
@@ -10013,6 +10051,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8516605282333606495, guid: 8ff499320e390f4418d6e1feccd3302e, type: 3}
   m_PrefabInstance: {fileID: 1576103546}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1817692713 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1606493293557272187, guid: 8ff499320e390f4418d6e1feccd3302e, type: 3}
+  m_PrefabInstance: {fileID: 1576103546}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7b5cc0547dbe7b48a2a766b7296fc06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1817863726
 GameObject:
   m_ObjectHideFlags: 0
@@ -10107,6 +10156,30 @@ PrefabInstance:
     - target: {fileID: 8516605282333606492, guid: 8ff499320e390f4418d6e1feccd3302e, type: 3}
       propertyPath: m_Name
       value: GameSlot (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516605282333606494, guid: 8ff499320e390f4418d6e1feccd3302e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516605282333606494, guid: 8ff499320e390f4418d6e1feccd3302e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1267479943}
+    - target: {fileID: 8516605282333606494, guid: 8ff499320e390f4418d6e1feccd3302e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnGameSlotClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516605282333606494, guid: 8ff499320e390f4418d6e1feccd3302e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameSlotManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516605282333606494, guid: 8ff499320e390f4418d6e1feccd3302e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1025531629}
+    - target: {fileID: 8516605282333606494, guid: 8ff499320e390f4418d6e1feccd3302e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: GameSlot, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8516605282333606495, guid: 8ff499320e390f4418d6e1feccd3302e, type: 3}
       propertyPath: m_Pivot.x
@@ -11267,6 +11340,30 @@ PrefabInstance:
     - target: {fileID: 8516605282333606494, guid: 8ff499320e390f4418d6e1feccd3302e, type: 3}
       propertyPath: m_Colors.m_DisabledColor.r
       value: 0.21568628
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516605282333606494, guid: 8ff499320e390f4418d6e1feccd3302e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516605282333606494, guid: 8ff499320e390f4418d6e1feccd3302e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1267479943}
+    - target: {fileID: 8516605282333606494, guid: 8ff499320e390f4418d6e1feccd3302e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnGameSlotClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516605282333606494, guid: 8ff499320e390f4418d6e1feccd3302e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameSlotManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516605282333606494, guid: 8ff499320e390f4418d6e1feccd3302e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1252225912}
+    - target: {fileID: 8516605282333606494, guid: 8ff499320e390f4418d6e1feccd3302e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: GameSlot, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8516605282333606495, guid: 8ff499320e390f4418d6e1feccd3302e, type: 3}
       propertyPath: m_Pivot.x

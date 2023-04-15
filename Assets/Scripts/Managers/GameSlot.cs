@@ -14,11 +14,20 @@ public class GameSlot : MonoBehaviour
     [SerializeField] private Text playerNameText;
     [SerializeField] private Text lastUpdatedText;
 
-    public Button button;
+    private Button button;
+
+    private void Awake()
+    {
+        button = GetComponent<Button>();
+    }
+
+    public void SetInteractable(bool interactable)
+    {
+        button.interactable = interactable;
+    }
 
     public void SetData(GameData data)
     {
-        button = GetComponent<Button>();
         if (data == null)
         {
             noDataContent.SetActive(true);

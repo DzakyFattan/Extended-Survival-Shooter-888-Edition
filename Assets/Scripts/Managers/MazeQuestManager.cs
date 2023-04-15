@@ -22,7 +22,7 @@ public class MazeQuestManager : MonoBehaviour
         print("this is maze quest manager from maze quest scene");
         endTime = Time.time;
         timeSO.Value = endTime - startTime;
-        State.Instance.completedQuests(2);
+        State.Instance.completedQuests.Add(2);
         SceneManager.LoadSceneAsync("EndQuestScene");
     }
     public void IncrementScore(){
