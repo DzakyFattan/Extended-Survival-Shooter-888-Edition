@@ -5,6 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class GameData
 {
+    public string lastUpdated;
+    public string playerName;
     public float score;
     public List<int> completedQuests;
     public List<int> ownedPets;
@@ -14,6 +16,7 @@ public class GameData
 
     public GameData()
     {
+        this.playerName = "Player1";
         this.score = 0;
         this.completedQuests = new List<int>();
         this.ownedPets = new List<int>();

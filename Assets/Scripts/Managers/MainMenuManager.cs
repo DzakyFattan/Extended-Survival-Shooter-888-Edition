@@ -9,6 +9,7 @@ public class MainMenuManager : MonoBehaviour
     public Button newGameButton;
     public Button saveSlot1Button;
     public Button quitButton;
+    public InputField playerNameInputField;
     [SerializeField] Slider volumeSlider;
 
     public delegate void ButtonClicked();
@@ -18,6 +19,7 @@ public class MainMenuManager : MonoBehaviour
         newGameButton.onClick.AddListener(LoadFirstQuest);
         saveSlot1Button.onClick.AddListener(LoadSavedGame);
         quitButton.onClick.AddListener(QuitGame);
+        playerNameInputField.onValueChanged.AddListener(OnInputFieldChanged);
         if (!PlayerPrefs.HasKey("musicVolume"))
         {
             PlayerPrefs.SetFloat("musicVolume", 1);
@@ -77,5 +79,12 @@ public class MainMenuManager : MonoBehaviour
     private void SaveVolumeSetting()
     {
         PlayerPrefs.SetFloat("musicVolume", volumeSlider.value);
+    }
+
+    private void OnInputFieldChanged(string value)
+    {
+        Debug.Log("Input field changed to: " + value);
+        PlayerPrefs.SetString("playerName", value);
+        State.Instance.playerName = value;
     }
 }
