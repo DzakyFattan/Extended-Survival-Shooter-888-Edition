@@ -7,7 +7,6 @@ public class Key : MonoBehaviour
   // get collider
   private Collider keyCollider;
   // public KeyCounter legacy text
-  public UnityEngine.UI.Text keyLeft;
 
   void Awake()
   {
@@ -44,6 +43,10 @@ public class Key : MonoBehaviour
         // call function from game manager
         gameManager.GetComponent<MazeQuestManager>().EndGame();
       }
+      
+    // find MazeQuestManager object and call incrementScore function
+      GameObject.Find("MazeQuestManager").GetComponent<MazeQuestManager>().IncrementScore();
+
       Destroy(gameObject);
     }
   }

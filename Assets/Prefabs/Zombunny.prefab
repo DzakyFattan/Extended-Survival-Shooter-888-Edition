@@ -337,6 +337,7 @@ MonoBehaviour:
   sinkSpeed: 2.5
   scoreValue: 10
   deathClip: {fileID: 8300000, guid: 0c6edf857df93bb44a478ec383d9d507, type: 3}
+  scoreSO: {fileID: 11400000, guid: 8e6cbf4f3d62bdb9291c789be709ae31, type: 2}
 --- !u!54 &4225886081275184859
 Rigidbody:
   m_ObjectHideFlags: 0

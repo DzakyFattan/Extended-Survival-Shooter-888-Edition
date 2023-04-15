@@ -7,7 +7,7 @@ public class EnemyHealth : MonoBehaviour
     public float sinkSpeed = 2.5f;
     public int scoreValue = 10;
     public AudioClip deathClip;
-
+    public FloatSO scoreSO;
 
     Animator anim;
     AudioSource enemyAudio;
@@ -60,7 +60,7 @@ public class EnemyHealth : MonoBehaviour
     {
         isDead = true;
 
-        ScoreManager.score += scoreValue;
+        scoreSO.Value += scoreValue;
 
         capsuleCollider.isTrigger = true;
 

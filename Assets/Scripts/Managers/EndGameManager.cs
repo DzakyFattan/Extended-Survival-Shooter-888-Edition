@@ -13,11 +13,16 @@ public Text allText;
     
     void Start()
     {
+        print("end game manager from end quest scene ");
         print("Score: " + scoreSO.Value);
         print("Time: " + timeSO.Value);
+
+
+        
         allText.text = "Score: " + scoreSO.Value + " Time: " + timeSO.Value;
         // add will go back to home world scene
         allText.text += " Will go back to home world scene in 5 seconds";
+        SetToState();
     }
 
     void Update()
@@ -27,8 +32,18 @@ public Text allText;
         {
             print("Time: " + timeLeft);
             // TODO: save game
-            SceneManager.LoadSceneAsync("HomeWorld");
+            SceneManager.LoadScene("HomeWorld");
         }
+    }
+
+    void SetToState()
+    {   
+        // weird bug, score and time is doubled
+        State.Instance.score += (int)scoreSO.Value;
+        State.Instance.time += timeSO.Value;
+        
+        // give 10000 currency for now
+        State.Instance.currency += 10000;
     }
 
 }

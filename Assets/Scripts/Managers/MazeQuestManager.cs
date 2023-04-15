@@ -8,9 +8,11 @@ public class MazeQuestManager : MonoBehaviour
 
     // public FloatSO scoreSO;
     public FloatSO timeSO;
+    public FloatSO scoreSO;
     
     float startTime;
     float endTime;
+
     
     void Awake(){
         startTime = Time.time;
@@ -19,12 +21,12 @@ public class MazeQuestManager : MonoBehaviour
   
 
     public void EndGame(){
+        print("this is maze quest manager from maze quest scene");
         endTime = Time.time;
-        timeSO.Value += endTime - startTime;
-        // scoreSO.Value = scoreSO.Value + timeSO.Value;
-        // print("Score: " + scoreSO.Value);
-        print("Time: " + timeSO.Value);
-        // TODO: change scene to EndQuestScene
+        timeSO.Value = endTime - startTime;
         SceneManager.LoadSceneAsync("EndQuestScene");
+    }
+    public void IncrementScore(){
+        scoreSO.Value += 100;
     }
 }

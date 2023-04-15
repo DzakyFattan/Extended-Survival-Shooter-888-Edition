@@ -33,43 +33,54 @@ public class PlayerHealth : MonoBehaviour, IHealth
 
     void Update()
     {
-        if (damaged)
+        // if damage image is not null
+        if (damageImage != null)
         {
-            damageImage.color = flashColour;
-        }
-        else
-        {
-            damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
-        }
+            if (damaged)
+            {
+                damageImage.color = flashColour;
+            }
+            else
+            {
+                damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
+            }
 
-        damaged = false;
+            damaged = false;
+        }
     }
 
 
     public void TakeDamage(int amount)
     {
-        damaged = true;
+        // if slider is not null
+        if (healthSlider != null)
+            {
+            damaged = true;
 
-        currentHealth -= amount;
+            currentHealth -= amount;
 
-        healthSlider.value = currentHealth;
+            healthSlider.value = currentHealth;
 
-        playerAudio.Play();
+            playerAudio.Play();
 
-        if (currentHealth <= 0 && !isDead)
-        {
-            Death();
+            if (currentHealth <= 0 && !isDead)
+            {
+                Death();
+            }
         }
     }
 
     public void Heal(int amount)
     {
-        currentHealth += amount;
-        if (currentHealth > startingHealth)
+        if (healthSlider != null)
         {
-            currentHealth = startingHealth;
+            currentHealth += amount;
+            if (currentHealth > startingHealth)
+            {
+                currentHealth = startingHealth;
+            }
+            healthSlider.value = currentHealth;
         }
-        healthSlider.value = currentHealth;
     }
 
 
