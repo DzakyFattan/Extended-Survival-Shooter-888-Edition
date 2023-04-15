@@ -5,7 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class BossSceneChecker : MonoBehaviour
 {
-    void Start()
+    // On trigger enter 3d
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            CheckQuests();
+        }
+    }
+
+    void CheckQuests()
     {
         int distQuestCompleted = 0;
         List<int> completedQuests = new List<int>();
@@ -19,7 +28,7 @@ public class BossSceneChecker : MonoBehaviour
             }
         }
 
-        if (distQuestCompleted >= 0)
+        if (distQuestCompleted >= 4)
         {
             SceneManager.LoadScene("MidScene");
         }
