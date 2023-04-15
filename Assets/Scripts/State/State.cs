@@ -12,6 +12,8 @@ public class State : MonoBehaviour, IDataPersistence
     public List<int> completedQuests = new List<int>();
     public List<int> ownedPets = new List<int>();
     public float time = 0;
+    
+    public ScoreData scoreData = new ScoreData();
 
     public bool boughtSword = false;
     public bool boughtShotgun = false;

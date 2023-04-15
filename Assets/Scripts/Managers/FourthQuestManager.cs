@@ -28,10 +28,9 @@ public class FourthQuestManager : MonoBehaviour
     void EndGame(){
         endTime = Time.time;
         timeSO.Value += endTime - startTime;
-        print("Time: " + (endTime - startTime).ToString());
+        // print("Time: " + (endTime - startTime).ToString());
         State.Instance.completedQuests.Add(4);
-        State.Instance.score += scoreSO.Value;
         // TODO: change scene to EndQuestScene
-        SceneManager.LoadSceneAsync("EndQuestScene");
+        SceneManager.LoadScene("EndQuestScene");
     }
 }

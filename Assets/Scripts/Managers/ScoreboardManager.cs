@@ -10,15 +10,10 @@ public class ScoreboardManager : MonoBehaviour
     // private static GameObject Instance;
     private ScoreData scoreData;
 
-    void Awake()
-    {
-        PlayerPrefs.DeleteAll();
-        var json = PlayerPrefs.GetString("ScoreData", "{}");
-        scoreData = JsonUtility.FromJson<ScoreData>(json);
-    }
     void Start()
     {
         Debug.Log("ScoreBoardManager");
+        scoreData = State.Instance.scoreData;
     }
     public IEnumerable<Score> GetScores()
     {
@@ -33,12 +28,5 @@ public class ScoreboardManager : MonoBehaviour
     private void OnDestroy()
     {
         Debug.Log("ScoreboardManager OnDestroy");
-        SaveScoreData();
-    }
-
-    public void SaveScoreData()
-    {
-        string json = JsonUtility.ToJson(scoreData);
-        PlayerPrefs.SetString("ScoreData", json);
     }
 }
