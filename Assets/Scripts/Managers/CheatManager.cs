@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CheatManager : MonoBehaviour
 {
@@ -16,7 +17,10 @@ public class CheatManager : MonoBehaviour
     public bool isCheatEnabled = false;
     private string EnteredString = "";
     public PlayerHealth playerHealth;
+    // public bool isNoDamageEnabled = false;
     public bool isOneHitEnabled = false;
+    public bool isMotherlodeEnabled = false;
+    public bool isTwoSpeedEnabled = false;
     public bool isFullHPPetEnabled = false;
 
     public bool isKillAllPetsEnabled = false;
@@ -73,31 +77,33 @@ public class CheatManager : MonoBehaviour
 
     private void startCheat()
     {
-        if (EnteredString == cheatNoDamage)
+        if (EnteredString == cheatNoDamage && !playerHealth.isNoDamageEnabled)
         {
             playerHealth.isNoDamageEnabled = true;
         }
-        else if (EnteredString == cheatOneHit)
+        else if (EnteredString == cheatOneHit && !isOneHitEnabled)
         {
             isOneHitEnabled = true;
         }
-        else if (EnteredString == cheatMotherlode)
+        else if (EnteredString == cheatMotherlode && !isMotherlodeEnabled)
         {
             Debug.Log(State.Instance.currency);
-            State.Instance.currency += 2147483640;
+            State.Instance.currency = 999999999;
             Debug.Log(State.Instance.currency);
+            isMotherlodeEnabled = true;
         }
-        else if (EnteredString == cheatTwoSpeed)
+        else if (EnteredString == cheatTwoSpeed && !isTwoSpeedEnabled)
         {
             Debug.Log(playerMovement.speed);
             playerMovement.speed *= 2;
             Debug.Log(playerMovement.speed);
+            isTwoSpeedEnabled = true;
         }
-        else if (EnteredString == cheatPetFull)
+        else if (EnteredString == cheatPetFull && !isFullHPPetEnabled)
         {
             isFullHPPetEnabled = true;
         }
-        else if (EnteredString == cheatKillPet)
+        else if (EnteredString == cheatKillPet && !isKillAllPetsEnabled)
         {
             isKillAllPetsEnabled = true;
         }
@@ -105,11 +111,21 @@ public class CheatManager : MonoBehaviour
         {
             playerHealth.isNoDamageEnabled = false;
             isOneHitEnabled = false;
-            State.Instance.currency -= 2147483640;
-            playerMovement.speed = 6;
+            isMotherlodeEnabled = false;
+            isTwoSpeedEnabled = false;
+            // check HomeWorld Scene
+            if (SceneManager.GetActiveScene().name == "HomeWorld")
+            {
+                playerMovement.speed = 50;
+            }
+            else
+            {
+                playerMovement.speed = 6;
+            }
             isFullHPPetEnabled = false;
             isKillAllPetsEnabled = false;
             isCheatEnabled = false;
+
         }
     }
 }
