@@ -24,6 +24,8 @@ public class MazeQuestManager : MonoBehaviour
         // scoreSO.Value = scoreSO.Value + timeSO.Value;
         // print("Score: " + scoreSO.Value);
         print("Time: " + timeSO.Value);
+        State.Instance.completedQuests.Add(2);
+        // State.Instance.score += scoreSO.Value;
         // TODO: change scene to EndQuestScene
         SceneManager.LoadSceneAsync("EndQuestScene");
     }

@@ -21,6 +21,13 @@ public class Shop : MonoBehaviour
             // go to shop
             Debug.Log("Going to shop");
         }
+        // if L is pressed and trigger is true, save game
+        else if (Input.GetKeyDown(KeyCode.L) && shopHUD.activeSelf)
+        {
+            // go to shop
+            Debug.Log("Save Game");
+            DataPersistenceManager.instance.SaveGame();
+        }
     }
     // on cube colider, enable HUD which tell the player to press enter to go to shop
     private void OnTriggerEnter(Collider other)

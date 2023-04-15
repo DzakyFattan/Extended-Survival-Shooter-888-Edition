@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+// using UnityEngine.SceneManagement;
 
 public class DataPersistenceManager : MonoBehaviour
 {
-    // [Header("File Storage Config")]
-    // [SerializeField] private string fileName;
-    // [SerializeField] private bool useEncryption;
+    [Header("File Storage Config")]
+    [SerializeField] private string fileName;
+    [SerializeField] private bool useEncryption;
 
     private GameData gameData;
     private List<IDataPersistence> dataPersistenceObjects;
-    // private FileDataHandler dataHandler;
+    private FileDataHandler dataHandler;
 
     public static DataPersistenceManager instance { get; private set; }
 
@@ -19,17 +20,21 @@ public class DataPersistenceManager : MonoBehaviour
     {
         if (instance != null)
         {
-            Debug.LogError("Found more than one Data Persistence Manager in the scene.");
+            Debug.LogError("Found more than one Data Persistence Manager in the scene. Destroying the newest one.");
+            Destroy(this);
+            return;
         }
         instance = this;
+        DontDestroyOnLoad(this);
+
+        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
+        this.dataPersistenceObjects = FindAllDataPersistenceObjects();
     }
 
-    private void Start()
-    {
-        // this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
-        this.dataPersistenceObjects = FindAllDataPersistenceObjects();
-        LoadGame();
-    }
+    // private void Start()
+    // {
+    //     LoadGame();
+    // }
 
     public void NewGame()
     {
@@ -39,7 +44,7 @@ public class DataPersistenceManager : MonoBehaviour
     public void LoadGame()
     {
         // load any saved data from a file using the data handler
-        // this.gameData = dataHandler.Load();
+        this.gameData = dataHandler.Load();
 
         // if no data can be loaded, initialize to a new game
         if (this.gameData == null)
@@ -54,7 +59,10 @@ public class DataPersistenceManager : MonoBehaviour
             dataPersistenceObj.LoadData(gameData);
         }
 
-        Debug.Log("Game data loaded. Player Score: " + gameData.playerScore);
+        // move to HomeWorld scene
+        // SceneManager.LoadSceneAsync("HomeWorld");
+
+        // Debug.Log("Game data loaded. Player Score: " + gameData.score);
     }
 
     public void SaveGame()
@@ -65,16 +73,11 @@ public class DataPersistenceManager : MonoBehaviour
             dataPersistenceObj.SaveData(ref gameData);
         }
 
-        Debug.Log("Game data saved. Player Score: " + gameData.playerScore);
+        // Debug.Log("Game data saved. Player Score: " + gameData.playerScore);
 
         // save that data to a file using the data handler
-        // dataHandler.Save(gameData);
+        dataHandler.Save(gameData);
     }
-
-    // private void OnApplicationQuit()
-    // {
-    //     SaveGame();
-    // }
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()
     {
