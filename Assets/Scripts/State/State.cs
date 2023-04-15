@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class State : MonoBehaviour, IDataPersistence
 {
-    public static State Instance; 
+    public static State Instance;
 
     // Declare all state variables here
     public string playerName = "Player1";
@@ -12,13 +12,13 @@ public class State : MonoBehaviour, IDataPersistence
     public List<int> completedQuests = new List<int>();
     public List<int> ownedPets = new List<int>();
     public float time = 0;
-    
+
     public ScoreData scoreData = new ScoreData();
 
     public bool boughtSword = false;
     public bool boughtShotgun = false;
     public bool boughtBow = false;
-    
+
     private void Awake()
     {
         if (Instance != null)
@@ -55,5 +55,18 @@ public class State : MonoBehaviour, IDataPersistence
         data.boughtSword = this.boughtSword;
         data.boughtShotgun = this.boughtShotgun;
         data.boughtBow = this.boughtBow;
+    }
+
+    public void Reset()
+    {
+        // reset all state variables here
+        // this.playerName = "Player1";
+        this.score = 0;
+        this.currency = 0;
+        this.completedQuests = new List<int>();
+        this.ownedPets = new List<int>();
+        this.boughtSword = false;
+        this.boughtShotgun = false;
+        this.boughtBow = false;
     }
 }

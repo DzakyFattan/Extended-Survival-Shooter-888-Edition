@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameOverManager : MonoBehaviour
 {
-    public PlayerHealth playerHealth;       
-    public float restartDelay = 5f;            
+    public PlayerHealth playerHealth;
+    public float restartDelay = 5.0f;
 
+    [SerializeField] TMP_Text TimeText;
 
-    Animator anim;                          
-    float restartTimer;                    
-
+    Animator anim;
+    float restartTimer;
 
     void Awake()
     {
@@ -29,11 +30,16 @@ public class GameOverManager : MonoBehaviour
     {
         anim.SetTrigger("GameOver");
 
-        restartTimer += Time.deltaTime;
-
-        if (restartTimer >= restartDelay)
+        restartDelay -= Time.deltaTime;
+        TimeText.text = "Time: " + restartDelay.ToString("F2");
+        if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        if (restartDelay <= 0)
+        {
+            SceneManager.LoadScene("NewMainMenu");
+            State.Instance.Reset();
         }
     }
 }
