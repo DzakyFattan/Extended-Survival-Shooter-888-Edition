@@ -59,7 +59,7 @@ Berikut merupakan cara menjalankan game:
 1. Git Clone Repository ini
 <!-- Command -->
 ```bash
-git clone https://gitlab.informatika.org/dzakfr1006/IF3210-2023-Unity-888.git
+git clone https://github.com/DzakyFattan/Extended-Survival-Shooter-888-Edition.git
 ```
 2. Buka Unity Engine Hub
 3. Open > Add Project From Disk
